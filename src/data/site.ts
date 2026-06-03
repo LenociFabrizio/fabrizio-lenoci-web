@@ -36,7 +36,7 @@ export const site = {
    * IMPORTANTE: aggiorna con il tuo dominio reale prima del deploy.
    * Es: https://fabriziolenoci.vercel.app oppure https://fabriziolenoci.dev
    */
-  url: "https://fabriziolenoci.vercel.app",
+  url: "https://fabriziolenoci.dev",
 
   /** Tagline breve (usata in meta description e hero) */
   tagline:
