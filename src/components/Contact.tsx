@@ -4,16 +4,51 @@ import { useState } from "react";
 import { site } from "@/data/site";
 import Reveal from "./ui/Reveal";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Sostituisci con la tua integrazione (Resend, Formspree, route /api/contact…)
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: "", email: "", message: "" });
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (!accessKey) {
+      console.error("NEXT_PUBLIC_WEB3FORMS_KEY non configurata");
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `Nuovo messaggio dal portfolio — ${form.name}`,
+          from_name: form.name,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setStatus("sent");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        throw new Error(data.message ?? "Invio non riuscito");
+      }
+    } catch (err) {
+      console.error("Errore invio form:", err);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
   };
 
   return (
@@ -65,10 +100,25 @@ export default function Contact() {
             />
             <button
               type="submit"
-              className="btn-primary rounded-xl py-4 text-sm font-medium sm:col-span-2"
+              disabled={status === "sending"}
+              className="btn-primary rounded-xl py-4 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2"
             >
-              {sent ? "Messaggio inviato ✦" : "Invia messaggio →"}
+              {status === "sending"
+                ? "Invio in corso…"
+                : status === "sent"
+                  ? "Messaggio inviato ✦"
+                  : "Invia messaggio →"}
             </button>
+
+            {status === "error" && (
+              <p className="text-sm text-red-400 sm:col-span-2">
+                Ops, qualcosa è andato storto. Riprova o scrivimi direttamente a{" "}
+                <a href={`mailto:${site.email}`} className="underline">
+                  {site.email}
+                </a>
+                .
+              </p>
+            )}
           </form>
 
           <div className="relative mt-10 flex items-center justify-center gap-6 text-sm text-muted">

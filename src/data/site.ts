@@ -29,7 +29,7 @@ export const site = {
   year: 2026,
 
   /** Contatto principale */
-  email: "ciao@fabriziolenoci.dev",
+  email: "fabriziolenoci@gmail.com",
 
   /**
    * URL pubblico del sito (usato per metadata, OG, sitemap).
@@ -62,7 +62,7 @@ export const site = {
   socials: [
     { label: "GitHub", href: "https://github.com/fabriziolenoci" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/fabriziolenoci" },
-    { label: "Email", href: "mailto:ciao@fabriziolenoci.dev" },
+    { label: "Email", href: "mailto:fabriziolenoci@gmail.com" },
   ],
 
   /** Tecnologie a scorrimento nella striscia marquee */
