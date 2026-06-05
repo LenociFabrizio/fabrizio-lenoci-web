@@ -66,9 +66,9 @@ export default function PrivacyPage() {
           </h2>
           <p>
             I dati vengono utilizzati esclusivamente per rispondere alla tua
-            richiesta e per ricontattarti riguardo al progetto. Non vengono
-            ceduti né venduti a terzi. L'invio del modulo avviene tramite il
-            servizio Web3Forms, che inoltra il messaggio alla mia casella email.
+            richiesta e per ricontattarti. Non vengono ceduti né venduti a
+            terzi. L'invio del modulo avviene tramite il servizio Web3Forms, che
+            inoltra il messaggio alla mia casella email.
           </p>
         </section>
 
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
           </h2>
           <p>
             Conservo i messaggi solo per il tempo necessario a gestire la tua
-            richiesta e l'eventuale collaborazione.
+            richiesta.
           </p>
         </section>
 

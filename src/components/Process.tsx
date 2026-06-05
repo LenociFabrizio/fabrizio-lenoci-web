@@ -13,8 +13,8 @@ export default function Process() {
         <SectionHeading
           index="03"
           kicker="come lavoro"
-          title="Dal primo contatto al lancio"
-          description="Un percorso semplice e trasparente, così sai sempre cosa aspettarti a ogni passo."
+          title="Come nasce un progetto"
+          description="Il percorso che seguo dall'idea iniziale fino alla pubblicazione online."
           align="row"
         />
 
@@ -46,10 +46,10 @@ export default function Process() {
 
         <div className="mt-10 flex justify-center">
           <a
-            href="#contact"
+            href="#work"
             className="btn-primary rounded-full px-7 py-3.5 text-sm font-medium"
           >
-            Iniziamo dal primo passo →
+            Guarda i progetti →
           </a>
         </div>
       </div>

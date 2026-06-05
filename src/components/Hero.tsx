@@ -23,7 +23,7 @@ export default function Hero() {
             className="glass mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs text-muted"
           >
             <span className="h-2 w-2 animate-floaty rounded-full bg-mint shadow-[0_0_10px_var(--mint)]" />
-            Disponibile per nuovi progetti · {site.year}
+            Sempre al lavoro su nuovi progetti · {site.year}
           </motion.div>
         )}
 
@@ -31,31 +31,30 @@ export default function Hero() {
           variants={staggerItem}
           className="font-display text-[clamp(2.6rem,8vw,6.5rem)] font-semibold leading-[0.98] tracking-tight"
         >
-          Siti e software su misura
+          Progetti web, codice
           <br />
-          che fanno <span className="text-grad">crescere</span> il tuo{" "}
-          <span className="text-grad-2 italic">business</span>.
+          e <span className="text-grad">sperimentazione</span>
+          <span className="text-grad-2 italic">.</span>
         </motion.h1>
 
         <motion.p
           variants={staggerItem}
           className="mt-7 max-w-xl text-[17px] leading-relaxed text-muted"
         >
-          Ciao, sono <strong className="text-ink">{site.name}</strong>. Progetto
-          e realizzo siti web, e-commerce e software gestionali su misura per la
-          tua attività. Mi occupo di tutto io — design, sviluppo, performance e
-          pubblicazione — così tu pensi solo al tuo lavoro.
+          Ciao, sono <strong className="text-ink">{site.name}</strong>,
+          sviluppatore full-stack. Questo è il mio spazio personale: una
+          raccolta di siti web e applicazioni che progetto e sviluppo per
+          approfondire tecnologie, design e sviluppo software — dal frontend al
+          backend.
         </motion.p>
 
         <motion.div
           variants={staggerItem}
           className="mt-10 flex flex-wrap items-center gap-4"
         >
-          <MagneticButton href="#contact">
-            Parliamo del tuo progetto →
-          </MagneticButton>
-          <MagneticButton href="#work" variant="ghost">
-            Guarda i progetti
+          <MagneticButton href="#work">Esplora i progetti →</MagneticButton>
+          <MagneticButton href="#contact" variant="ghost">
+            Contatti
           </MagneticButton>
         </motion.div>
 

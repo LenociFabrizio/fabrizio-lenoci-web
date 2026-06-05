@@ -7,13 +7,13 @@ export default function Footer() {
         {/* mini-CTA finale */}
         <div className="mb-12 flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
           <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-            Hai un progetto in mente?
+            Vuoi approfondire un progetto?
           </h2>
           <a
             href="#contact"
             className="btn-primary rounded-full px-6 py-3 text-sm font-medium"
           >
-            Parliamone →
+            Contattami →
           </a>
         </div>
 

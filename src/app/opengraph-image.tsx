@@ -70,8 +70,8 @@ export default function OpengraphImage() {
               lineHeight: 1.4,
             }}
           >
-            Siti web, e-commerce e software su misura — dall'idea alla messa
-            online.
+            Portfolio personale di sviluppo web — progetti, codice e
+            sperimentazioni.
           </div>
         </div>
       </div>

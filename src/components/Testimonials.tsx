@@ -18,8 +18,8 @@ export default function Testimonials() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="06"
-          kicker="dicono di me"
-          title="La parola ai clienti"
+          kicker="riscontri"
+          title="Cosa dicono dei miei lavori"
         />
 
         <motion.div

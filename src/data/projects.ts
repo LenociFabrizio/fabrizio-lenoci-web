@@ -90,11 +90,11 @@ export const projects: Project[] = [
     sector: "Alimentare · Lavorazione carni",
     year: "2025",
     description:
-      "Sito vetrina multilingue per uno storico laboratorio pugliese di lavorazione delle carni, attivo dal 1971.",
+      "Sito vetrina multilingue per uno storico laboratorio di lavorazione carni: un progetto curato nel design, nelle animazioni e nell'ottimizzazione tecnica.",
     challenge:
-      "Un'azienda con oltre cinquant'anni di storia e prodotti di grande qualità non aveva una presenza online all'altezza del proprio valore. Chi la cercava su internet faticava a capire chi fosse, cosa producesse e come contattarla.",
+      "Realizzare una presenza online elegante e veloce per un'azienda con una lunga storia, raccontandone l'identità e i prodotti e curando ogni dettaglio di design, performance e accessibilità.",
     solution:
-      "Ho realizzato un sito vetrina elegante e veloce che racconta la storia dell'azienda dal 1971 a oggi, presenta il catalogo delle specialità e rende immediato mettersi in contatto. Il sito è disponibile in tre lingue per raggiungere anche clienti fuori regione e all'estero.",
+      "Ho costruito un sito statico leggerissimo, con layout one-page, animazioni fluide e versioni in tre lingue. Ho curato la struttura semantica, i dati strutturati per la SEO e l'ottimizzazione delle immagini.",
     features: [
       "Racconto della storia dell'azienda come un percorso nel tempo, dal 1971 a oggi",
       "Catalogo delle specialità con schede dei prodotti tipici (involtini d'agnello, frattaglie, specialità pugliesi)",
@@ -104,10 +104,10 @@ export const projects: Project[] = [
       "Contatto diretto e immediato tramite telefono, email e WhatsApp",
     ],
     results: [
-      "Un biglietto da visita online professionale, all'altezza della reputazione dell'azienda",
-      "Più facile da trovare su Google e raggiungibile anche da clienti fuori regione grazie alle tre lingue",
-      "Navigazione perfetta da smartphone, tablet e computer, con caricamento velocissimo",
-      "Contatto a portata di un tocco, anche via WhatsApp",
+      "Sito statico velocissimo, senza framework lato client",
+      "Design responsive curato per smartphone, tablet e desktop",
+      "Supporto multilingua: italiano, inglese e spagnolo",
+      "Ottimizzazione SEO con dati strutturati e immagini in formato WebP",
     ],
     stack: [
       "HTML/CSS",

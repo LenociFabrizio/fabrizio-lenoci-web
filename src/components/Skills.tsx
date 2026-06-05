@@ -13,7 +13,7 @@ export default function Skills() {
           index="05"
           kicker="competenze tecniche"
           title="Tecnologie e strumenti"
-          description="La parte tecnica, per chi vuole saperne di più. Tu non devi conoscerla: ci penso io."
+          description="Le tecnologie e gli strumenti che uso e che continuo ad approfondire, progetto dopo progetto."
           align="row"
         />
 

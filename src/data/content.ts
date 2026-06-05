@@ -27,27 +27,27 @@ export interface Service {
 export const services: Service[] = [
   {
     n: "01",
-    title: "Siti web e landing page",
-    desc: "Siti veloci, curati e ottimizzati per Google e per il mobile, che trasformano i visitatori in contatti e clienti.",
-    forWho: "Per chi vuole presentarsi online in modo professionale.",
+    title: "Siti web e interfacce",
+    desc: "Interfacce moderne, veloci e responsive, curate nel design, nelle animazioni e nell'esperienza d'uso.",
+    forWho: "Frontend, UI e attenzione ai dettagli.",
   },
   {
     n: "02",
-    title: "E-commerce e negozi online",
-    desc: "Negozi online completi di pagamenti, spedizioni e gestione degli ordini. Vendi i tuoi prodotti 24 ore su 24, anche mentre dormi.",
-    forWho: "Per chi vuole vendere prodotti o servizi online.",
+    title: "E-commerce e flussi complessi",
+    desc: "Cataloghi, carrello, pagamenti e gestione degli ordini: esploro l'intero funzionamento di un negozio online.",
+    forWho: "Integrazioni e logiche articolate.",
   },
   {
     n: "03",
-    title: "Gestionali e software su misura",
-    desc: "Software costruito sui tuoi processi reali: prenotazioni, magazzino, clienti, automazioni. Meno lavoro manuale, meno errori, più tempo.",
-    forWho: "Per chi perde tempo con fogli Excel e procedure manuali.",
+    title: "Gestionali e applicazioni",
+    desc: "Applicazioni con database, autenticazione e logiche di dominio, per mettere alla prova architetture reali.",
+    forWho: "Backend, dati e architettura.",
   },
   {
     n: "04",
-    title: "Supporto dopo il lancio",
-    desc: "Non ti lascio solo dopo la consegna: quando ti servono, mi occupo di aggiornamenti e piccole modifiche al sito.",
-    forWho: "Per chi vuole un punto di riferimento anche dopo la pubblicazione.",
+    title: "Performance e qualità",
+    desc: "Ottimizzazione, SEO tecnica, accessibilità e Core Web Vitals: studio come rendere il web veloce e accessibile.",
+    forWho: "Velocità, accessibilità e best practice.",
   },
 ];
 
@@ -64,23 +64,23 @@ export interface ProcessStep {
 export const workProcess: ProcessStep[] = [
   {
     n: "01",
-    title: "Ascolto e analisi",
-    desc: "Una prima chiamata gratuita e senza impegno per capire i tuoi obiettivi, il tuo pubblico e il budget a disposizione.",
+    title: "Idea e analisi",
+    desc: "Parto da un'idea o da una tecnologia che voglio approfondire e definisco obiettivi, contenuti e funzionalità.",
   },
   {
     n: "02",
-    title: "Proposta e accordi",
-    desc: "Ti presento una proposta chiara con tempi, costi e cosa è incluso. Tutto concordato in anticipo, senza sorprese.",
+    title: "Design e progettazione",
+    desc: "Disegno l'interfaccia e l'architettura del progetto e scelgo gli strumenti più adatti a realizzarlo.",
   },
   {
     n: "03",
-    title: "Design e sviluppo",
-    desc: "Realizzo il progetto tenendoti aggiornato a ogni passo, con anteprime che puoi provare in prima persona prima del lancio.",
+    title: "Sviluppo",
+    desc: "Scrivo il codice, frontend e backend, curando qualità, performance e dettagli a ogni passaggio.",
   },
   {
     n: "04",
-    title: "Lancio e supporto",
-    desc: "Pubblico il progetto online, ti spiego come usarlo e resto disponibile per eventuali modifiche e aggiornamenti.",
+    title: "Deploy e rifinitura",
+    desc: "Pubblico il progetto online, lo provo su più dispositivi e continuo a migliorarlo nel tempo.",
   },
 ];
 
@@ -95,28 +95,28 @@ export interface Faq {
 
 export const faqs: Faq[] = [
   {
-    q: "Quanto costa un sito o un'applicazione?",
-    a: "Ogni progetto è su misura, quindi dipende dalle funzionalità che ti servono. Dopo una prima chiamata gratuita ti spiego in modo chiaro tempi, costi e cosa è incluso, senza costi nascosti.",
+    q: "Che tipo di progetti realizzi?",
+    a: "Siti web, interfacce, e-commerce e applicazioni full-stack. Ogni progetto nasce per approfondire una tecnologia, un'idea di design o un aspetto dello sviluppo.",
   },
   {
-    q: "Quanto tempo serve per realizzarlo?",
-    a: "Una landing page richiede in genere 1-2 settimane, un sito completo 3-5 settimane, un gestionale dipende dalla complessità. Ti do una stima precisa fin dall'inizio.",
+    q: "Quali tecnologie utilizzi?",
+    a: "Principalmente React, Next.js, TypeScript e Node.js, con Tailwind CSS per l'interfaccia e database come PostgreSQL. Mi piace però sperimentare strumenti nuovi a ogni progetto.",
   },
   {
-    q: "Il sito sarà mio? Posso modificarlo da solo?",
-    a: "Sì. Il progetto, i contenuti e il dominio sono tuoi al 100%. Dove possibile inserisco un pannello semplice per aggiornare testi e immagini in autonomia, senza chiamare un tecnico.",
+    q: "I progetti sono online?",
+    a: "Alcuni progetti sono pubblicati e raggiungibili dal vivo; per ognuno trovi, dove disponibili, il link al sito e al codice.",
   },
   {
-    q: "Cosa serve da parte mia per iniziare?",
-    a: "Bastano la tua idea e qualche informazione sulla tua attività. Al resto — testi, struttura, grafica e aspetti tecnici — ti guido io passo passo.",
+    q: "Aggiorni spesso il portfolio?",
+    a: "Sì. Aggiungo nuovi lavori man mano che li realizzo, perciò questo spazio cresce e cambia nel tempo.",
   },
   {
-    q: "Posso chiederti modifiche dopo la consegna?",
-    a: "Certo. Anche dopo la consegna posso occuparmi di aggiornamenti e piccole modifiche al sito, in base alle tue esigenze del momento.",
+    q: "Posso vedere il codice dei progetti?",
+    a: "Quando il codice è pubblico trovi il link al repository direttamente nella scheda del progetto.",
   },
   {
-    q: "Lavori anche con clienti fuori dalla mia città?",
-    a: "Certo. Lavoro da remoto con clienti in tutta Italia: chiamate, email e anteprime online rendono tutto semplice e comodo anche a distanza.",
+    q: "Come posso contattarti?",
+    a: "Trovi tutti i miei recapiti nella sezione Contatti: sono sempre disponibile a confrontarmi su idee, tecnologie e sviluppo.",
   },
 ];
 

@@ -55,7 +55,7 @@ export default function Navbar() {
           href="#contact"
           className="btn-ghost glass hidden rounded-full border border-[var(--border)] px-4 py-2 text-sm lg:inline-flex"
         >
-          Lavoriamo insieme
+          Contatti
         </a>
 
         <button
@@ -104,7 +104,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="btn-primary mt-2 flex justify-center rounded-xl py-3 text-sm font-medium"
             >
-              Lavoriamo insieme →
+              Contatti →
             </a>
           </motion.div>
         )}

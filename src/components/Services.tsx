@@ -12,9 +12,9 @@ export default function Services() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="01"
-          kicker="servizi"
-          title="Cosa posso fare per te"
-          description="Dalla prima idea fino alla messa online: scegli il punto di partenza, al resto pensiamo insieme."
+          kicker="ambiti"
+          title="Cosa sviluppo"
+          description="Gli ambiti su cui mi concentro e che continuo ad approfondire, dal frontend al backend."
           align="row"
         />
 

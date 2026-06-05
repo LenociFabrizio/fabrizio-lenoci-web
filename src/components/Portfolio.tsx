@@ -25,9 +25,9 @@ export default function Portfolio() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="02"
-          kicker="lavori selezionati"
-          title="Progetti reali, risultati concreti"
-          description="Alcuni dei lavori che ho realizzato. Clicca su un progetto per scoprire l'esigenza del cliente e come l'ho risolta."
+          kicker="progetti"
+          title="Progetti e sperimentazioni"
+          description="Una selezione di siti e applicazioni che ho sviluppato. Apri un progetto per vedere com'è nato e le tecnologie che ho usato."
           align="row"
         />
 

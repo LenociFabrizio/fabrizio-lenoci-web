@@ -7,11 +7,10 @@ import Reveal from "./ui/Reveal";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const projectTypes = [
-  "Sito web / vetrina",
-  "E-commerce",
-  "Gestionale / software su misura",
-  "Manutenzione di un sito esistente",
-  "Altro / non so ancora",
+  "Un progetto del portfolio",
+  "Tecnologie e sviluppo",
+  "Una proposta o un'idea",
+  "Altro",
 ];
 
 export default function Contact() {
@@ -47,7 +46,7 @@ export default function Contact() {
           from_name: form.name,
           name: form.name,
           email: form.email,
-          "Tipo di progetto": form.projectType,
+          Oggetto: form.projectType,
           message: form.message,
         }),
       });
@@ -81,15 +80,14 @@ export default function Contact() {
             / 08 — contatti
           </span>
           <h2 className="relative mb-4 mt-4 font-display text-4xl font-semibold tracking-tight sm:text-6xl">
-            Hai un progetto
+            Parliamo di
             <br />
-            <span className="text-grad">in mente?</span>
+            <span className="text-grad">codice e progetti.</span>
           </h2>
           <p className="relative mx-auto mb-8 max-w-lg text-muted">
-            Raccontami la tua idea, anche in due righe. Ti rispondo personalmente{" "}
-            {site.responseTime} con un primo parere, le possibili soluzioni e una
-            stima indicativa di tempi e costi. La prima chiamata è gratuita e
-            senza impegno.
+            Per maggiori informazioni o per approfondire un progetto, trovi i
+            miei recapiti qui sotto. Sono sempre disponibile a confrontarmi su
+            idee, tecnologie e sviluppo.
           </p>
 
           {/* contatto diretto rapido */}
@@ -156,7 +154,7 @@ export default function Contact() {
 
             <div className="flex flex-col gap-1.5 sm:col-span-2">
               <label htmlFor="c-type" className="sr-only">
-                Tipo di progetto
+                Motivo del contatto
               </label>
               <select
                 id="c-type"
@@ -180,7 +178,7 @@ export default function Contact() {
                 id="c-message"
                 required
                 rows={4}
-                placeholder="Parlami del progetto…"
+                placeholder="Scrivi pure il tuo messaggio…"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className={`${fieldClass} resize-none`}
@@ -220,8 +218,8 @@ export default function Contact() {
 
             {status === "sent" && (
               <p className="text-sm text-mint sm:col-span-2">
-                Grazie! Ho ricevuto il tuo messaggio e ti rispondo{" "}
-                {site.responseTime}. Controlla anche lo spam, per sicurezza.
+                Grazie! Ho ricevuto il tuo messaggio e ti risponderò appena
+                possibile. Controlla anche lo spam, per sicurezza.
               </p>
             )}
             {status === "error" && (

@@ -5,9 +5,9 @@ import Reveal from "./ui/Reveal";
 
 /** Dati sintetici, onesti e verificabili mostrati nella card profilo. */
 const quickFacts = [
-  { label: "Sviluppo", value: "Full-stack · front + back" },
-  { label: "Dove", value: "Da remoto, in tutta Italia" },
-  { label: "Risposta", value: site.responseTime },
+  { label: "Ruolo", value: "Sviluppatore full-stack" },
+  { label: "Stack", value: "React · Next.js · Node" },
+  { label: "Base", value: "Italia" },
   { label: "Formazione", value: "Diploma + Laurea in Informatica" },
 ];
 
@@ -18,9 +18,9 @@ export default function About() {
         <Reveal>
           <span className="font-mono text-xs text-lilac">/ 04 — chi sono</span>
           <h2 className="mb-6 mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-            Un unico referente,
+            Imparo costruendo,
             <br />
-            dall'idea ai risultati.
+            dall'idea al deploy.
           </h2>
           {site.bio.map((p, i) => (
             <p key={i} className="mb-4 text-[17px] leading-relaxed text-muted">
@@ -83,7 +83,7 @@ export default function About() {
               href="#contact"
               className="btn-primary mt-7 flex justify-center rounded-full py-3 text-sm font-medium"
             >
-              Parliamo del tuo progetto →
+              I miei contatti →
             </a>
           </div>
         </Reveal>

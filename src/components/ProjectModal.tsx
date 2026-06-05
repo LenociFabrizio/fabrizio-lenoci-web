@@ -125,11 +125,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </h2>
             <p className="mt-1 text-sm text-muted">{project.client}</p>
 
-            <CaseBlock label="La sfida" text={project.challenge} />
-            <CaseBlock label="La soluzione" text={project.solution} />
+            <CaseBlock label="L'obiettivo" text={project.challenge} />
+            <CaseBlock label="Come l'ho sviluppato" text={project.solution} />
 
-            <CaseList label="Cosa è stato realizzato" items={project.features} />
-            <CaseList label="I vantaggi" items={project.results} accent />
+            <CaseList label="Cosa ho realizzato" items={project.features} />
+            <CaseList label="Punti chiave" items={project.results} accent />
 
             {project.testimonial && (
               <figure className="glass mt-7 rounded-3xl border border-[var(--border)] p-6">

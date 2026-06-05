@@ -62,43 +62,42 @@ export const site = {
 
   /** Tagline breve (usata in meta description e hero) */
   tagline:
-    "Aiuto aziende e professionisti a crescere online con siti web, e-commerce e software gestionali su misura — curo tutto io, dall'idea alla messa online.",
+    "Portfolio personale di sviluppo web: una raccolta di siti, applicazioni e sperimentazioni che realizzo per approfondire tecnologie, design e sviluppo software.",
 
   /** Bio mostrata nella sezione About (array di paragrafi) */
   bio: [
-    "Sono Fabrizio Lenoci, sviluppatore full-stack. Diplomato e laureato in Informatica, progetto e realizzo siti web, e-commerce e software gestionali su misura per aziende e professionisti.",
-    "Quello che mi distingue è che hai un unico interlocutore dall'inizio alla fine: niente agenzie con dieci passaggi, niente tecnicismi inutili. Ti ascolto, ti propongo la soluzione più adatta al tuo budget e resto al tuo fianco anche dopo il lancio.",
+    "Sono Fabrizio Lenoci, sviluppatore full-stack. Diplomato e laureato in Informatica, dedico tempo a progettare e realizzare siti web e applicazioni per approfondire tecnologie, design e sviluppo software.",
+    "Questo spazio raccoglie i progetti che sviluppo nel tempo: ogni lavoro è un'occasione per sperimentare strumenti nuovi, curare i dettagli e migliorare il mio modo di scrivere codice.",
   ],
 
-  /** Motivi concreti per scegliere di lavorare insieme (sezione Chi sono). */
+  /** Valori e approccio allo sviluppo (sezione Chi sono). */
   reasons: [
     {
-      title: "Un solo referente",
-      desc: "Parli sempre con me, dalla prima idea all'assistenza dopo il lancio. Nessun call center, nessun passaggio di mano.",
+      title: "Codice curato",
+      desc: "Scrivo codice pulito, tipizzato e organizzato, con attenzione alla qualità e alla manutenibilità.",
     },
     {
-      title: "Condizioni chiare",
-      desc: "Tempi, costi e cosa è incluso concordati prima di iniziare. Sai sempre cosa aspettarti, senza sorprese.",
+      title: "Cura del dettaglio",
+      desc: "Design, animazioni e micro-interazioni curati fino all'ultimo pixel, su ogni dispositivo.",
     },
     {
-      title: "Il progetto è tuo",
-      desc: "Codice, contenuti e dominio restano di tua proprietà al 100%. Dove possibile ti lascio un pannello per aggiornarti da solo.",
+      title: "Studio continuo",
+      desc: "Ogni progetto è un'occasione per imparare strumenti e tecniche nuove e mettermi alla prova.",
     },
     {
-      title: "Supporto anche dopo",
-      desc: "Non sparisco dopo la consegna: resto disponibile per aggiornamenti e piccole modifiche quando ti servono.",
+      title: "Dall'idea al deploy",
+      desc: "Seguo l'intero percorso di un progetto: analisi, design, sviluppo frontend e backend, performance e pubblicazione.",
     },
   ],
 
   /**
    * Statistiche mostrate nell'hero.
-   * Orientate al cliente. Sostituisci con numeri VERI man mano che crescono
-   * (es. { value: "12+", label: "Progetti consegnati" }).
+   * Neutre, descrittive del profilo da sviluppatore.
    */
   stats: [
-    { value: "< 24h", label: "Tempo di risposta" },
-    { value: "A → Z", label: "Dal progetto al lancio" },
-    { value: "100%", label: "Codice su misura" },
+    { value: "Full-stack", label: "Frontend + Backend" },
+    { value: "A → Z", label: "Dall'idea al deploy" },
+    { value: "100%", label: "Codice scritto a mano" },
   ],
 
   /** Link social — sostituisci con i tuoi profili reali */
@@ -131,7 +130,7 @@ export const whatsappLink = site.whatsapp
 
 /** Link del menu di navigazione */
 export const navLinks = [
-  { label: "Servizi", href: "#services" },
+  { label: "Cosa faccio", href: "#services" },
   { label: "Progetti", href: "#work" },
   { label: "Come lavoro", href: "#process" },
   { label: "Chi sono", href: "#about" },

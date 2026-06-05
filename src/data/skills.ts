@@ -49,7 +49,7 @@ export const capabilities: Capability[] = [
     n: "03",
     title: "Software Gestionali",
     description:
-      "Soluzioni digitali su misura: dashboard, CRM, sistemi di gestione interna e applicazioni dipartimentali.",
+      "Applicazioni gestionali: dashboard, CRM, sistemi di gestione interna e strumenti dipartimentali, per esplorare logiche di dominio reali.",
     tags: ["Web App", "SaaS", "Automazioni", "CMS"],
   },
   {
