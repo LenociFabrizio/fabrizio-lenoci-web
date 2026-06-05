@@ -67,7 +67,7 @@ export const site = {
   /** Bio mostrata nella sezione About (array di paragrafi) */
   bio: [
     "Sono Fabrizio Lenoci, sviluppatore full-stack. Diplomato e laureato in Informatica, dedico tempo a progettare e realizzare siti web e applicazioni per approfondire tecnologie, design e sviluppo software.",
-    "Questo spazio raccoglie i progetti che sviluppo nel tempo: ogni lavoro è un'occasione per sperimentare strumenti nuovi, curare i dettagli e migliorare il mio modo di scrivere codice.",
+    "Questo spazio raccoglie i progetti che sviluppo nel tempo: ogni progetto è un'occasione per sperimentare strumenti nuovi, curare i dettagli e migliorare il mio modo di scrivere codice.",
   ],
 
   /** Valori e approccio allo sviluppo (sezione Chi sono). */
@@ -132,7 +132,7 @@ export const whatsappLink = site.whatsapp
 export const navLinks = [
   { label: "Cosa faccio", href: "#services" },
   { label: "Progetti", href: "#work" },
-  { label: "Come lavoro", href: "#process" },
+  { label: "Processo", href: "#process" },
   { label: "Chi sono", href: "#about" },
   { label: "FAQ", href: "#faq" },
 ];

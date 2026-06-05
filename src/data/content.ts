@@ -108,7 +108,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Aggiorni spesso il portfolio?",
-    a: "Sì. Aggiungo nuovi lavori man mano che li realizzo, perciò questo spazio cresce e cambia nel tempo.",
+    a: "Sì. Aggiungo nuovi progetti man mano che li realizzo, perciò questo spazio cresce e cambia nel tempo.",
   },
   {
     q: "Posso vedere il codice dei progetti?",

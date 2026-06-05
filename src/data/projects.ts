@@ -83,25 +83,25 @@ export const projects: Project[] = [
   /* -------- CASO STUDIO #1 — I.L. Carni SRL -------- */
   {
     slug: "il-carni-srl",
-    title: "I.L. Carni SRL",
+    title: "Vetrina multilingue — settore alimentare",
     kind: "reale",
     category: "sito-web",
-    client: "I.L. Carni SRL — Modugno (Bari)",
-    sector: "Alimentare · Lavorazione carni",
+    client: "Progetto personale · sito vetrina multilingue",
+    sector: "Settore alimentare",
     year: "2025",
     description:
-      "Sito vetrina multilingue per uno storico laboratorio di lavorazione carni: un progetto curato nel design, nelle animazioni e nell'ottimizzazione tecnica.",
+      "Sito vetrina multilingue per il settore alimentare: un progetto in cui ho curato design, animazioni e ottimizzazione tecnica.",
     challenge:
-      "Realizzare una presenza online elegante e veloce per un'azienda con una lunga storia, raccontandone l'identità e i prodotti e curando ogni dettaglio di design, performance e accessibilità.",
+      "Progettare e sviluppare una vetrina online elegante e veloce, capace di raccontare storia e prodotti di un'attività del settore alimentare, curando ogni dettaglio di design, performance e accessibilità.",
     solution:
       "Ho costruito un sito statico leggerissimo, con layout one-page, animazioni fluide e versioni in tre lingue. Ho curato la struttura semantica, i dati strutturati per la SEO e l'ottimizzazione delle immagini.",
     features: [
-      "Racconto della storia dell'azienda come un percorso nel tempo, dal 1971 a oggi",
-      "Catalogo delle specialità con schede dei prodotti tipici (involtini d'agnello, frattaglie, specialità pugliesi)",
-      "Sezione dedicata a qualità e certificazioni, con riferimento al bollo CE",
-      "Galleria fotografica dello stabilimento, della produzione e dei prodotti",
-      "Sito disponibile in italiano, inglese e spagnolo",
-      "Contatto diretto e immediato tramite telefono, email e WhatsApp",
+      "Sezione storia presentata come un percorso nel tempo, dal 1971 a oggi",
+      "Catalogo delle specialità con schede dei singoli prodotti",
+      "Sezione dedicata a qualità e certificazioni",
+      "Galleria fotografica di ambienti, produzione e prodotti",
+      "Interfaccia disponibile in italiano, inglese e spagnolo",
+      "Contatto diretto tramite telefono, email e WhatsApp",
     ],
     results: [
       "Sito statico velocissimo, senza framework lato client",
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     ],
     image: "/projects/il-carni-srl.png",
     imageAlt:
-      "Homepage del sito web realizzato per I.L. Carni SRL, azienda di lavorazione carni a Modugno (Bari)",
+      "Anteprima della homepage di un sito vetrina multilingue per il settore alimentare",
     gradient: "linear-gradient(135deg,#ffb3a0,#b6a4ff)",
     live: "https://www.ilcarnisrl.it",
     featured: true,

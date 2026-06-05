@@ -19,7 +19,7 @@ export default function Testimonials() {
         <SectionHeading
           index="06"
           kicker="riscontri"
-          title="Cosa dicono dei miei lavori"
+          title="Cosa dicono dei miei progetti"
         />
 
         <motion.div

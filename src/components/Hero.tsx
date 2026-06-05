@@ -23,7 +23,7 @@ export default function Hero() {
             className="glass mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs text-muted"
           >
             <span className="h-2 w-2 animate-floaty rounded-full bg-mint shadow-[0_0_10px_var(--mint)]" />
-            Sempre al lavoro su nuovi progetti · {site.year}
+            Sempre immerso nella programmazione · {site.year}
           </motion.div>
         )}
 

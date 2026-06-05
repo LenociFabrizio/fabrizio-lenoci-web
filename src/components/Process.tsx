@@ -12,7 +12,7 @@ export default function Process() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           index="03"
-          kicker="come lavoro"
+          kicker="processo"
           title="Come nasce un progetto"
           description="Il percorso che seguo dall'idea iniziale fino alla pubblicazione online."
           align="row"
