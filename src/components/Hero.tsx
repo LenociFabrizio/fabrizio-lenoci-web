@@ -52,7 +52,7 @@ export default function Hero() {
           className="mt-10 flex flex-wrap items-center gap-4"
         >
           <MagneticButton href="#contact">
-            Richiedi un preventivo gratuito →
+            Parliamo del tuo progetto →
           </MagneticButton>
           <MagneticButton href="#work" variant="ghost">
             Guarda i progetti

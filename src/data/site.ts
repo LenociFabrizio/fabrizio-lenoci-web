@@ -77,7 +77,7 @@ export const site = {
       desc: "Parli sempre con me, dalla prima idea all'assistenza dopo il lancio. Nessun call center, nessun passaggio di mano.",
     },
     {
-      title: "Preventivi chiari",
+      title: "Condizioni chiare",
       desc: "Tempi, costi e cosa è incluso concordati prima di iniziare. Sai sempre cosa aspettarti, senza sorprese.",
     },
     {

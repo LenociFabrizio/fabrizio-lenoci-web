@@ -69,8 +69,8 @@ export const workProcess: ProcessStep[] = [
   },
   {
     n: "02",
-    title: "Proposta e preventivo",
-    desc: "Ti invio una proposta chiara con tempi, costi e cosa è incluso. Tutto concordato in anticipo, senza sorprese.",
+    title: "Proposta e accordi",
+    desc: "Ti presento una proposta chiara con tempi, costi e cosa è incluso. Tutto concordato in anticipo, senza sorprese.",
   },
   {
     n: "03",
@@ -96,7 +96,7 @@ export interface Faq {
 export const faqs: Faq[] = [
   {
     q: "Quanto costa un sito o un'applicazione?",
-    a: "Ogni progetto è su misura, quindi il prezzo dipende dalle funzionalità che ti servono. Dopo una prima chiamata gratuita ti invio un preventivo chiaro e dettagliato, senza costi nascosti.",
+    a: "Ogni progetto è su misura, quindi dipende dalle funzionalità che ti servono. Dopo una prima chiamata gratuita ti spiego in modo chiaro tempi, costi e cosa è incluso, senza costi nascosti.",
   },
   {
     q: "Quanto tempo serve per realizzarlo?",
