@@ -15,6 +15,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Chiude il menu mobile quando si torna a viewport desktop
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => mq.matches && setOpen(false);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   return (
     <motion.header
       initial={{ y: -30, opacity: 0 }}
@@ -35,7 +43,7 @@ export default function Navbar() {
           {site.brand}
         </a>
 
-        <div className="hidden items-center gap-8 text-sm text-muted md:flex">
+        <div className="hidden items-center gap-7 text-sm text-muted lg:flex">
           {navLinks.map((l) => (
             <a key={l.href} href={l.href} className="nav-link transition hover:text-white">
               {l.label}
@@ -45,30 +53,41 @@ export default function Navbar() {
 
         <a
           href="#contact"
-          className="btn-ghost glass hidden rounded-full border border-[var(--border)] px-4 py-2 text-sm sm:inline-flex"
+          className="btn-ghost glass hidden rounded-full border border-[var(--border)] px-4 py-2 text-sm lg:inline-flex"
         >
           Lavoriamo insieme
         </a>
 
         <button
-          aria-label="Apri menu"
+          aria-label={open ? "Chiudi menu" : "Apri menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="glass flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] md:hidden"
+          className="glass flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] lg:hidden"
         >
-          <div className="space-y-1">
-            <span className="block h-0.5 w-4 bg-ink" />
-            <span className="block h-0.5 w-4 bg-ink" />
-          </div>
+          <span className="relative block h-3.5 w-4">
+            <span
+              className={`absolute left-0 block h-0.5 w-4 bg-ink transition-all duration-300 ${
+                open ? "top-1.5 rotate-45" : "top-0.5"
+              }`}
+            />
+            <span
+              className={`absolute left-0 block h-0.5 w-4 bg-ink transition-all duration-300 ${
+                open ? "top-1.5 -rotate-45" : "top-[11px]"
+              }`}
+            />
+          </span>
         </button>
       </nav>
 
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="glass border-grad mx-auto mt-2 max-w-6xl rounded-2xl p-4 md:hidden"
+            className="glass border-grad mx-auto mt-2 max-w-6xl rounded-2xl p-4 lg:hidden"
           >
             {navLinks.map((l) => (
               <a
@@ -80,6 +99,13 @@ export default function Navbar() {
                 {l.label}
               </a>
             ))}
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="btn-primary mt-2 flex justify-center rounded-xl py-3 text-sm font-medium"
+            >
+              Lavoriamo insieme →
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

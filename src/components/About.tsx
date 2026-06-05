@@ -1,39 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { site } from "@/data/site";
-import { focusTags, stackLevels } from "@/data/skills";
-import { ease, fadeUp, viewport } from "@/lib/motion";
 import Reveal from "./ui/Reveal";
+
+/** Dati sintetici, onesti e verificabili mostrati nella card profilo. */
+const quickFacts = [
+  { label: "Sviluppo", value: "Full-stack · front + back" },
+  { label: "Dove", value: "Da remoto, in tutta Italia" },
+  { label: "Risposta", value: site.responseTime },
+  { label: "Formazione", value: "Diploma + Laurea in Informatica" },
+];
 
 export default function About() {
   return (
     <section id="about" className="relative z-10 px-5 py-28 sm:px-8">
       <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.1fr_.9fr]">
         <Reveal>
-          <span className="font-mono text-xs text-lilac">/ 02 — chi sono</span>
+          <span className="font-mono text-xs text-lilac">/ 04 — chi sono</span>
           <h2 className="mb-6 mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-            Codice pulito,
+            Un unico referente,
             <br />
-            risultati su misura.
+            dall'idea ai risultati.
           </h2>
           {site.bio.map((p, i) => (
-            <p
-              key={i}
-              className="mb-4 text-[17px] leading-relaxed text-muted"
-            >
+            <p key={i} className="mb-4 text-[17px] leading-relaxed text-muted">
               {p}
             </p>
           ))}
 
-          <div className="mt-9 flex flex-wrap gap-2.5">
-            {focusTags.map((t) => (
-              <span
-                key={t}
-                className="glass rounded-full border border-[var(--border)] px-4 py-2 font-mono text-sm"
+          <div className="mt-9 grid gap-4 sm:grid-cols-2">
+            {site.reasons.map((r) => (
+              <div
+                key={r.title}
+                className="glass rounded-2xl border border-[var(--border)] p-5"
               >
-                {t}
-              </span>
+                <div className="flex items-center gap-2 font-display text-[15px] font-medium">
+                  <span aria-hidden className="text-grad">
+                    ✦
+                  </span>
+                  {r.title}
+                </div>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                  {r.desc}
+                </p>
+              </div>
             ))}
           </div>
         </Reveal>
@@ -51,31 +61,30 @@ export default function About() {
                 <div className="font-display text-lg font-medium">
                   {site.name}
                 </div>
-                <div className="text-sm text-muted">
-                  {site.role} · {site.location}
-                </div>
+                <div className="text-sm text-muted">{site.role}</div>
               </div>
             </div>
 
-            <div className="space-y-5">
-              {stackLevels.map((s, i) => (
-                <div key={s.name}>
-                  <div className="mb-2 flex justify-between text-sm">
-                    <span>{s.name}</span>
-                    <span className="font-mono text-muted">{s.level}%</span>
-                  </div>
-                  <div className="h-1.5 overflow-hidden rounded-full bg-[var(--panel-strong)]">
-                    <motion.span
-                      className="block h-full rounded-full bg-gradient-to-r from-lilac to-cyan"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${s.level}%` }}
-                      viewport={viewport}
-                      transition={{ duration: 1.3, ease, delay: 0.15 * i }}
-                    />
-                  </div>
+            <dl className="divide-y divide-[var(--border)]">
+              {quickFacts.map((f) => (
+                <div
+                  key={f.label}
+                  className="flex items-center justify-between gap-4 py-3.5"
+                >
+                  <dt className="font-mono text-xs uppercase tracking-wide text-muted-2">
+                    {f.label}
+                  </dt>
+                  <dd className="text-right text-sm text-ink">{f.value}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
+
+            <a
+              href="#contact"
+              className="btn-primary mt-7 flex justify-center rounded-full py-3 text-sm font-medium"
+            >
+              Parliamo del tuo progetto →
+            </a>
           </div>
         </Reveal>
       </div>

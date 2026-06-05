@@ -16,8 +16,8 @@ export const site = {
   /** Ruolo principale */
   role: "Sviluppatore Software & Web Developer",
 
-  /** Città di base */
-  location: "Italia",
+  /** Città / area di base */
+  location: "Italia · da remoto in tutta Italia",
 
   /** Anno di nascita */
   birthYear: 2000,
@@ -32,29 +32,72 @@ export const site = {
   email: "fabriziolenoci@gmail.com",
 
   /**
+   * Telefono e WhatsApp per il contatto diretto (molto apprezzato dai clienti).
+   * ➜ Inserisci il tuo numero in formato internazionale SENZA spazi né "+",
+   *   es. phone: "393331234567". Se lasci la stringa vuota, i pulsanti
+   *   relativi NON vengono mostrati (nessun numero finto online).
+   */
+  phone: "393913495256", // es. "393331234567"
+  whatsapp: "393913495256", // es. "393331234567" — se vuoto il pulsante WhatsApp resta nascosto
+
+  /** Messaggio precompilato per l'apertura della chat WhatsApp */
+  whatsappMessage:
+    "Ciao Fabrizio! Ho visto il tuo portfolio e vorrei qualche informazione su un progetto.",
+
+  /**
+   * Partita IVA — forte segnale di serietà per le PMI italiane.
+   * Se vuota non viene mostrata nel footer.
+   */
+  vatNumber: "", // es. "01234567890"
+
+  /** Tempo di risposta dichiarato (usato in Hero e Contatti) */
+  responseTime: "entro 24 ore",
+
+  /**
    * URL pubblico del sito (usato per metadata, OG, sitemap).
-   * IMPORTANTE: aggiorna con il tuo dominio reale prima del deploy.
+   * ⚠ IMPORTANTE: aggiorna con il tuo dominio reale prima del deploy.
    * Es: https://fabriziolenoci.vercel.app oppure https://fabriziolenoci.dev
    */
-  url: "https://fabriziolenoci.dev",
+  url: "https://fabriziolenoci.it",
 
   /** Tagline breve (usata in meta description e hero) */
   tagline:
-    "Sviluppo applicazioni web, siti moderni, software gestionali e soluzioni digitali personalizzate.",
+    "Aiuto aziende e professionisti a crescere online con siti web, e-commerce e software gestionali su misura — curo tutto io, dall'idea alla messa online.",
 
   /** Bio mostrata nella sezione About (array di paragrafi) */
   bio: [
-    "Sono Fabrizio Lenoci, classe 2000. Diplomato in Informatica e laureato in Informatica e Produzione del Software, lavoro come sviluppatore software e web developer.",
-    "Progetto e realizzo applicazioni web, siti web moderni, software gestionali e soluzioni digitali su misura. Seguo l'intero ciclo del progetto: dall'analisi al design, dallo sviluppo frontend e backend fino al deploy.",
+    "Sono Fabrizio Lenoci, sviluppatore full-stack. Diplomato e laureato in Informatica, progetto e realizzo siti web, e-commerce e software gestionali su misura per aziende e professionisti.",
+    "Quello che mi distingue è che hai un unico interlocutore dall'inizio alla fine: niente agenzie con dieci passaggi, niente tecnicismi inutili. Ti ascolto, ti propongo la soluzione più adatta al tuo budget e resto al tuo fianco anche dopo il lancio.",
+  ],
+
+  /** Motivi concreti per scegliere di lavorare insieme (sezione Chi sono). */
+  reasons: [
+    {
+      title: "Un solo referente",
+      desc: "Parli sempre con me, dalla prima idea all'assistenza dopo il lancio. Nessun call center, nessun passaggio di mano.",
+    },
+    {
+      title: "Preventivi chiari",
+      desc: "Tempi, costi e cosa è incluso concordati prima di iniziare. Sai sempre cosa aspettarti, senza sorprese.",
+    },
+    {
+      title: "Il progetto è tuo",
+      desc: "Codice, contenuti e dominio restano di tua proprietà al 100%. Dove possibile ti lascio un pannello per aggiornarti da solo.",
+    },
+    {
+      title: "Supporto anche dopo",
+      desc: "Non sparisco dopo la consegna: resto disponibile per aggiornamenti e piccole modifiche quando ti servono.",
+    },
   ],
 
   /**
    * Statistiche mostrate nell'hero.
-   * Sostituisci pure con i tuoi numeri reali: bastano stringhe brevi.
+   * Orientate al cliente. Sostituisci con numeri VERI man mano che crescono
+   * (es. { value: "12+", label: "Progetti consegnati" }).
    */
   stats: [
-    { value: "Classe '00", label: "Sviluppatore" },
-    { value: "Full-stack", label: "Web & Software" },
+    { value: "< 24h", label: "Tempo di risposta" },
+    { value: "A → Z", label: "Dal progetto al lancio" },
     { value: "100%", label: "Codice su misura" },
   ],
 
@@ -78,10 +121,19 @@ export const site = {
   ],
 };
 
+/**
+ * Link WhatsApp pronto all'uso (vuoto se il numero non è impostato).
+ * Usato da Navbar, Contatti e Footer.
+ */
+export const whatsappLink = site.whatsapp
+  ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`
+  : "";
+
 /** Link del menu di navigazione */
 export const navLinks = [
+  { label: "Servizi", href: "#services" },
   { label: "Progetti", href: "#work" },
+  { label: "Come lavoro", href: "#process" },
   { label: "Chi sono", href: "#about" },
-  { label: "Competenze", href: "#skills" },
-  { label: "Contatti", href: "#contact" },
+  { label: "FAQ", href: "#faq" },
 ];

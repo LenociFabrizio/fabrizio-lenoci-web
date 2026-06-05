@@ -28,6 +28,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Compensa la navbar fissa: i titoli delle sezioni non finiscono sotto al menu */
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -35,6 +37,44 @@ body {
   color: var(--ink);
   font-family: var(--font-sans);
   overflow-x: hidden;
+}
+
+/* Accessibilità: testo solo per screen reader (es. label dei campi form) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Anello di focus visibile e coerente per chi naviga da tastiera */
+:focus-visible {
+  outline: 2px solid var(--lilac);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Link "salta al contenuto": nascosto finché non riceve il focus da tastiera */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  background: var(--lilac);
+  color: #0a0a12;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
 }
 
 ::selection {

@@ -22,39 +22,61 @@ npm run build && npm run start   # build di produzione
 
 ## ✏️ Cosa modificare (parti da qui)
 
-Tutti i contenuti sono centralizzati in **3 file**: non servono modifiche ai componenti.
+Tutti i contenuti sono centralizzati in **4 file**: non servono modifiche ai componenti.
 
 | Cosa | File |
 |------|------|
-| Nome, bio, social, statistiche, dominio | `src/data/site.ts` |
-| **Progetti del portfolio** (aggiungi/modifica/elimina) | `src/data/projects.ts` |
-| Skill, livelli e competenze | `src/data/skills.ts` |
+| Nome, bio, social, statistiche, telefono/WhatsApp, P.IVA, dominio | `src/data/site.ts` |
+| **Progetti del portfolio / casi studio** (aggiungi/modifica/elimina) | `src/data/projects.ts` |
+| **Servizi, processo, FAQ, testimonianze** | `src/data/content.ts` |
+| Competenze tecniche (sezione "Tecnologie") | `src/data/skills.ts` |
 
-### Aggiungere un nuovo progetto
+> ⚙️ **Dati da compilare per primi** in `src/data/site.ts`: `phone` / `whatsapp`
+> (numero internazionale senza `+` né spazi, es. `393331234567`), `vatNumber`
+> e `url` (il dominio reale). Finché `whatsapp`/`phone` sono vuoti i relativi
+> pulsanti **non vengono mostrati** — nessun numero finto online.
 
-Apri `src/data/projects.ts` e duplica un blocco esistente nell'array `projects`:
+### Aggiungere un nuovo progetto (caso studio)
+
+Apri `src/data/projects.ts` e copia il blocco **MODELLO** in fondo all'array `projects`:
 
 ```ts
 {
   slug: "nome-progetto",            // identificatore univoco
   title: "Nome Progetto",
-  category: "web",                  // libera — il filtro si crea da solo
-  description: "Breve descrizione (1-2 righe).",
+  kind: "reale",                    // "reale" | "demo"
+  category: "sito-web",             // libera — il filtro si crea da solo
+  client: "Nome cliente — Città",
+  sector: "Settore di attività",
+  year: "2026",
+  description: "Sintesi in una riga per la card.",
+  challenge: "Qual era il problema / l'esigenza del cliente.",
+  solution: "Cosa hai realizzato, spiegato in parole semplici.",
+  features: ["Funzionalità 1", "Funzionalità 2"],
+  results: ["Vantaggio concreto 1", "Vantaggio concreto 2"],
   stack: ["Next.js", "TypeScript", "Tailwind"],
   image: "/projects/nome-progetto.webp",   // opzionale
   gradient: "linear-gradient(135deg,#b6a4ff,#86e6ff)",
-  live: "https://...",
-  repo: "https://github.com/...",
+  live: "https://...",              // opzionale
+  repo: "https://github.com/...",   // opzionale
+  testimonial: {                    // opzionale — SOLO se reale
+    quote: "Testo della recensione.",
+    author: "Nome Cognome",
+    role: "Ruolo, Azienda",
+  },
 },
 ```
 
-➜ I **filtri per categoria si generano automaticamente** dai progetti.
-   Se inserisci `category: "gestionale"`, comparirà subito il filtro relativo.
+➜ I **filtri per categoria si generano automaticamente** dai progetti (compaiono
+   solo quando ci sono almeno due categorie diverse).
+➜ Cliccando una card si apre il **dettaglio del caso studio** (sfida, soluzione,
+   funzionalità, vantaggi, testimonianza).
 
-### Sostituire un placeholder
+### Testimonianze
 
-I 6 progetti attualmente presenti sono **placeholder dimostrativi**.
-Sostituiscili man mano con i tuoi lavori reali, oppure svuota l'array e inserisci i tuoi da zero.
+In `src/data/content.ts`, l'array `testimonials` parte **vuoto**: la sezione
+"Dicono di me" resta nascosta finché non inserisci recensioni **reali**.
+Stesso principio per `projects[].testimonial`. Non inserire mai recensioni finte.
 
 ### Aggiungere lo screenshot di un progetto
 

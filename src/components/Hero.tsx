@@ -29,29 +29,33 @@ export default function Hero() {
 
         <motion.h1
           variants={staggerItem}
-          className="font-display text-[clamp(2.8rem,8.5vw,7rem)] font-semibold leading-[0.95] tracking-tight"
+          className="font-display text-[clamp(2.6rem,8vw,6.5rem)] font-semibold leading-[0.98] tracking-tight"
         >
-          Sviluppo <span className="text-grad">software e siti web</span>
+          Siti e software su misura
           <br />
-          su <span className="text-grad-2 italic">misura</span>.
+          che fanno <span className="text-grad">crescere</span> il tuo{" "}
+          <span className="text-grad-2 italic">business</span>.
         </motion.h1>
 
         <motion.p
           variants={staggerItem}
           className="mt-7 max-w-xl text-[17px] leading-relaxed text-muted"
         >
-          Ciao, sono <strong className="text-ink">{site.name}</strong>.{" "}
-          {site.tagline} Mi occupo dell'intero ciclo del progetto: design,
-          sviluppo frontend e backend, performance e deploy.
+          Ciao, sono <strong className="text-ink">{site.name}</strong>. Progetto
+          e realizzo siti web, e-commerce e software gestionali su misura per la
+          tua attività. Mi occupo di tutto io — design, sviluppo, performance e
+          pubblicazione — così tu pensi solo al tuo lavoro.
         </motion.p>
 
         <motion.div
           variants={staggerItem}
           className="mt-10 flex flex-wrap items-center gap-4"
         >
-          <MagneticButton href="#work">Guarda i progetti →</MagneticButton>
-          <MagneticButton href="#contact" variant="ghost">
-            Contattami
+          <MagneticButton href="#contact">
+            Richiedi un preventivo gratuito →
+          </MagneticButton>
+          <MagneticButton href="#work" variant="ghost">
+            Guarda i progetti
           </MagneticButton>
         </motion.div>
 
@@ -61,7 +65,7 @@ export default function Hero() {
         >
           {site.stats.map((s) => (
             <div key={s.label}>
-              <div className="text-grad font-display text-3xl font-semibold">
+              <div className="text-grad font-display text-2xl font-semibold sm:text-3xl">
                 {s.value}
               </div>
               <div className="mt-1 text-xs text-muted-2">{s.label}</div>
@@ -75,7 +79,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, ease }}
-        className="absolute right-[-10%] top-1/2 hidden h-[460px] w-[460px] -translate-y-1/2 animate-floaty rounded-full border border-white/[0.06] lg:block"
+        className="pointer-events-none absolute right-[-10%] top-1/2 hidden h-[460px] w-[460px] -translate-y-1/2 animate-floaty rounded-full border border-white/[0.06] lg:block"
       />
     </section>
   );

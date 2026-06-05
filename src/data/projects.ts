@@ -1,144 +1,158 @@
 /**
  * ============================================================
- *  PROGETTI DEL PORTFOLIO
+ *  PROGETTI DEL PORTFOLIO  ·  CASI STUDIO
  *  Questo è l'UNICO file da modificare per gestire i progetti.
  *
- *  ➜ Per AGGIUNGERE un progetto:
- *      Duplica il blocco "TEMPLATE" qui sotto, decommenta e
- *      compila i campi. La categoria può essere una qualsiasi
- *      stringa: i filtri vengono generati automaticamente.
+ *  Ogni progetto è pensato come un piccolo "caso studio" che spiega,
+ *  in parole semplici e comprensibili anche a chi non è del settore:
+ *    · CHI era il cliente            (client + sector)
+ *    · QUAL era il suo problema       (challenge)
+ *    · COSA è stato realizzato        (solution + features)
+ *    · QUALI vantaggi ne ricava       (results / benefits)
  *
+ *  ➜ Per AGGIUNGERE un progetto:
+ *      copia il blocco "MODELLO" in fondo al file, decommenta e
+ *      compila i campi. La categoria è una stringa libera: i filtri
+ *      vengono generati automaticamente.
  *  ➜ Per MODIFICARE un progetto: cambia i suoi campi qui.
  *  ➜ Per RIMUOVERE un progetto: cancella il suo oggetto.
- *
- *  Filtri, animazioni e griglia funzionano in automatico.
  * ============================================================
  */
+
+export interface Testimonial {
+  /** Testo della recensione (SOLO se reale) */
+  quote: string;
+  /** Nome di chi l'ha rilasciata */
+  author: string;
+  /** Ruolo e azienda */
+  role: string;
+}
 
 export interface Project {
   /** Identificatore univoco (usato come key React, in lowercase con trattini) */
   slug: string;
   /** Nome del progetto mostrato nella card */
   title: string;
-  /** Categoria libera: "web" | "ecommerce" | "landing" | "dashboard" | "gestionale" | ... */
+  /**
+   * Tipo di progetto:
+   *  - "reale": lavoro realmente realizzato per un cliente
+   *  - "demo": esempio dimostrativo / concept (mostra un badge esplicito)
+   * Non spacciare mai una demo per un lavoro reale: imposta il valore corretto.
+   */
+  kind: "reale" | "demo";
+  /** Categoria libera: "sito-web" | "ecommerce" | "gestionale" | "web-app" | ... */
   category: string;
-  /** Breve descrizione (1-2 righe) */
+  /** Chi è il cliente, in parole semplici (anche anonimo: "Studio dentistico — Bari") */
+  client: string;
+  /** Settore di attività: "Alimentare", "Sanità", "Ristorazione"… */
+  sector: string;
+  /** Anno di realizzazione (opzionale) */
+  year?: string;
+  /** Sintesi breve (1-2 righe) mostrata nella card */
   description: string;
-  /** Stack tecnologico — apparirà come chip mono */
+  /** Il problema / l'esigenza di partenza del cliente */
+  challenge: string;
+  /** Cosa è stato realizzato, spiegato in modo non tecnico */
+  solution: string;
+  /** Funzionalità principali, in linguaggio comprensibile a tutti */
+  features: string[];
+  /** Vantaggi concreti per il cliente e per gli utenti del sito */
+  results: string[];
+  /** Stack tecnologico — apparirà come chip mono nel dettaglio */
   stack: string[];
   /** Percorso dell'anteprima reale, es. "/projects/nome.webp" (opzionale) */
   image?: string;
+  /** Testo alternativo descrittivo dell'immagine (SEO/accessibilità, opzionale) */
+  imageAlt?: string;
   /** Gradiente di fallback mostrato se `image` non è impostata */
   gradient: string;
-  /** URL del sito live (opzionale, "#" per nascondere il bottone) */
+  /** URL del sito live (opzionale, "#" o assente per nascondere il bottone) */
   live?: string;
   /** URL del repository GitHub (opzionale) */
   repo?: string;
+  /** Testimonianza del cliente — SOLO se reale (opzionale) */
+  testimonial?: Testimonial;
   /** Se true, può essere usato in futuro per evidenziare il progetto */
   featured?: boolean;
 }
 
 /* ============================================================
- *  ELENCO PROGETTI
- *  ⚠ I progetti seguenti sono PLACEHOLDER dimostrativi.
- *    Sostituiscili man mano con i tuoi lavori reali.
+ *  ELENCO PROGETTI (casi studio reali)
  * ============================================================ */
 export const projects: Project[] = [
-  /* -------- progetto placeholder #1 -------- */
+  /* -------- CASO STUDIO #1 — I.L. Carni SRL -------- */
   {
-    slug: "lumen-finance",
-    title: "Lumen Finance",
-    category: "dashboard",
+    slug: "il-carni-srl",
+    title: "I.L. Carni SRL",
+    kind: "reale",
+    category: "sito-web",
+    client: "I.L. Carni SRL — Modugno (Bari)",
+    sector: "Alimentare · Lavorazione carni",
+    year: "2025",
     description:
-      "Dashboard analitica per fintech con grafici realtime e dark mode nativa.",
-    stack: ["Next.js", "TypeScript", "D3", "Postgres"],
-    gradient: "linear-gradient(135deg,#b6a4ff,#86e6ff)",
-    live: "#",
-    repo: "#",
-    featured: true,
-  },
-
-  /* -------- progetto placeholder #2 -------- */
-  {
-    slug: "atelier-99",
-    title: "Atelier 99",
-    category: "ecommerce",
-    description:
-      "E-commerce headless per brand di moda, checkout in 2 step e CMS custom.",
-    stack: ["Next.js", "Shopify", "Stripe", "Tailwind"],
+      "Sito vetrina multilingue per uno storico laboratorio pugliese di lavorazione delle carni, attivo dal 1971.",
+    challenge:
+      "Un'azienda con oltre cinquant'anni di storia e prodotti di grande qualità non aveva una presenza online all'altezza del proprio valore. Chi la cercava su internet faticava a capire chi fosse, cosa producesse e come contattarla.",
+    solution:
+      "Ho realizzato un sito vetrina elegante e veloce che racconta la storia dell'azienda dal 1971 a oggi, presenta il catalogo delle specialità e rende immediato mettersi in contatto. Il sito è disponibile in tre lingue per raggiungere anche clienti fuori regione e all'estero.",
+    features: [
+      "Racconto della storia dell'azienda come un percorso nel tempo, dal 1971 a oggi",
+      "Catalogo delle specialità con schede dei prodotti tipici (involtini d'agnello, frattaglie, specialità pugliesi)",
+      "Sezione dedicata a qualità e certificazioni, con riferimento al bollo CE",
+      "Galleria fotografica dello stabilimento, della produzione e dei prodotti",
+      "Sito disponibile in italiano, inglese e spagnolo",
+      "Contatto diretto e immediato tramite telefono, email e WhatsApp",
+    ],
+    results: [
+      "Un biglietto da visita online professionale, all'altezza della reputazione dell'azienda",
+      "Più facile da trovare su Google e raggiungibile anche da clienti fuori regione grazie alle tre lingue",
+      "Navigazione perfetta da smartphone, tablet e computer, con caricamento velocissimo",
+      "Contatto a portata di un tocco, anche via WhatsApp",
+    ],
+    stack: [
+      "HTML/CSS",
+      "Tailwind CSS",
+      "JavaScript",
+      "WebP",
+      "SEO / Schema.org",
+      "Multilingua",
+    ],
+    image: "/projects/il-carni-srl.png",
+    imageAlt:
+      "Homepage del sito web realizzato per I.L. Carni SRL, azienda di lavorazione carni a Modugno (Bari)",
     gradient: "linear-gradient(135deg,#ffb3a0,#b6a4ff)",
-    live: "#",
-    repo: "#",
-  },
-
-  /* -------- progetto placeholder #3 -------- */
-  {
-    slug: "pulse-studio",
-    title: "Pulse Studio",
-    category: "landing",
-    description:
-      "Landing cinematica per studio creativo con motion e parallasse leggera.",
-    stack: ["React", "Framer Motion", "GSAP"],
-    gradient: "linear-gradient(135deg,#86e6ff,#9dffce)",
-    live: "#",
-    repo: "#",
-  },
-
-  /* -------- progetto placeholder #4 -------- */
-  {
-    slug: "orbit-crm",
-    title: "Orbit CRM",
-    category: "gestionale",
-    description:
-      "Software gestionale SaaS per team commerciali: pipeline, automazioni e ruoli.",
-    stack: ["Next.js", "tRPC", "Prisma", "Redis"],
-    gradient: "linear-gradient(135deg,#9dffce,#86e6ff)",
-    live: "#",
-    repo: "#",
+    live: "https://www.ilcarnisrl.it",
     featured: true,
-  },
-
-  /* -------- progetto placeholder #5 -------- */
-  {
-    slug: "marea-wellness",
-    title: "Marea Wellness",
-    category: "landing",
-    description:
-      "Sito vetrina per centro benessere, prenotazioni integrate e SEO.",
-    stack: ["Astro", "Tailwind", "Sanity"],
-    gradient: "linear-gradient(135deg,#ffb3a0,#86e6ff)",
-    live: "#",
-    repo: "#",
-  },
-
-  /* -------- progetto placeholder #6 -------- */
-  {
-    slug: "nebula-notes",
-    title: "Nebula Notes",
-    category: "web",
-    description:
-      "Applicazione web di note collaborative in tempo reale con editor a blocchi.",
-    stack: ["React", "WebSocket", "Node", "Mongo"],
-    gradient: "linear-gradient(135deg,#b6a4ff,#ffb3a0)",
-    live: "#",
-    repo: "#",
   },
 
   /* ============================================================
-   *  ⬇⬇⬇  COME AGGIUNGERE UN NUOVO PROGETTO  ⬇⬇⬇
-   *  Copia il blocco qui sotto, rimuovi i commenti `/_` e `_/`
-   *  e compila i campi. Il filtro per categoria apparirà da solo.
+   *  ⬇⬇⬇  MODELLO — COME AGGIUNGERE UN NUOVO PROGETTO  ⬇⬇⬇
+   *  Copia il blocco qui sotto (togli i delimitatori di commento)
+   *  e compila i campi. I filtri per categoria si creano da soli.
    *
    *  {
    *    slug: "nome-progetto",
    *    title: "Nome Progetto",
-   *    category: "web",                         // libera
-   *    description: "Una breve descrizione del progetto.",
+   *    kind: "reale",                            // "reale" | "demo"
+   *    category: "sito-web",                     // libera
+   *    client: "Nome cliente — Città",
+   *    sector: "Settore di attività",
+   *    year: "2026",
+   *    description: "Sintesi in una riga per la card.",
+   *    challenge: "Qual era il problema / l'esigenza del cliente.",
+   *    solution: "Cosa hai realizzato, spiegato in parole semplici.",
+   *    features: ["Funzionalità 1", "Funzionalità 2", "Funzionalità 3"],
+   *    results: ["Vantaggio concreto 1", "Vantaggio concreto 2"],
    *    stack: ["Next.js", "TypeScript", "Tailwind"],
-   *    image: "/projects/nome-progetto.webp",   // opzionale
+   *    image: "/projects/nome-progetto.webp",    // opzionale
    *    gradient: "linear-gradient(135deg,#b6a4ff,#86e6ff)",
-   *    live: "https://...",
-   *    repo: "https://github.com/...",
+   *    live: "https://...",                      // opzionale
+   *    repo: "https://github.com/...",           // opzionale
+   *    testimonial: {                            // opzionale, SOLO se reale
+   *      quote: "Testo della recensione del cliente.",
+   *      author: "Nome Cognome",
+   *      role: "Ruolo, Azienda",
+   *    },
    *  },
    * ============================================================ */
 ];
@@ -151,11 +165,10 @@ export const projects: Project[] = [
 
 /** Etichette personalizzate (chiave = valore di `category`) */
 const categoryLabels: Record<string, string> = {
-  web: "Web App",
+  "sito-web": "Siti web",
   ecommerce: "E-commerce",
-  landing: "Landing",
-  dashboard: "Dashboard",
-  gestionale: "Gestionale",
+  gestionale: "Gestionali",
+  "web-app": "Web App",
 };
 
 export interface CategoryItem {

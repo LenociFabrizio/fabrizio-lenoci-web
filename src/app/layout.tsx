@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { site } from "@/data/site";
+import Providers from "@/components/Providers";
 
 /**
  * SEO METADATA
@@ -98,6 +99,15 @@ const personJsonLd = {
     .map((s) => s.href),
 };
 
+/**
+ * NOTA — Structured data e contesto fiscale.
+ * In via prudenziale NON viene dichiarato uno schema "ProfessionalService" o
+ * "LocalBusiness": non esiste un'attività d'impresa/struttura organizzata e
+ * non c'è una Partita IVA. Si usa quindi solo schema.org/Person (più la
+ * FAQPage), corretto per un portfolio personale ed egualmente efficace per la
+ * SEO sul nominativo. Vedi la sezione "Valutazione fiscale e legale" del report.
+ */
+
 export default function RootLayout({
   children,
 }: {
@@ -107,6 +117,7 @@ export default function RootLayout({
     <html lang="it">
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
         <link
           href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@300,400,500,600&f[]=jetbrains-mono@400,500&display=swap"
           rel="stylesheet"
@@ -116,7 +127,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <a href="#main" className="skip-link">
+          Salta al contenuto
+        </a>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

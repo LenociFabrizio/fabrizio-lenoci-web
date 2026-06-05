@@ -9,7 +9,13 @@ export default function Skills() {
   return (
     <section id="skills" className="relative z-10 px-5 py-28 sm:px-8">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="03" kicker="competenze" title="Cosa so fare" />
+        <SectionHeading
+          index="05"
+          kicker="competenze tecniche"
+          title="Tecnologie e strumenti"
+          description="La parte tecnica, per chi vuole saperne di più. Tu non devi conoscerla: ci penso io."
+          align="row"
+        />
 
         <motion.div
           variants={stagger}
