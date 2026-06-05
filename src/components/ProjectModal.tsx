@@ -54,7 +54,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     <AnimatePresence>
       {project && (
         <motion.div
-          className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/70 p-4 backdrop-blur-sm sm:p-8"
+          className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/85 p-4 backdrop-blur-sm sm:p-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -73,12 +73,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               onClose();
             }}
             aria-label="Chiudi"
+            style={{ backgroundColor: "var(--bg-soft)" }}
             className="glass fixed right-4 top-4 z-[81] flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] text-lg text-ink transition hover:text-white sm:right-6 sm:top-6"
           >
             ✕
           </button>
 
           <motion.div
+            style={{ backgroundColor: "var(--bg-soft)" }}
             className="glass border-grad relative my-auto w-full max-w-2xl rounded-4xl p-6 sm:p-9"
             initial={{ opacity: 0, y: 24, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
