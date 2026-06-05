@@ -17,20 +17,38 @@ interface ProjectModalProps {
  */
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  // onClose può cambiare identità a ogni render del genitore: lo teniamo in un
+  // ref così l'effetto di apertura/chiusura dipende solo da `project`.
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     if (!project) return;
+    const close = () => onCloseRef.current();
+
+    // Aggiunge una voce nella cronologia: così il tasto "indietro" del
+    // telefono (o il gesto di ritorno) chiude il modale invece di uscire dal sito.
+    window.history.pushState({ projectModal: true }, "");
+    const onPop = () => close();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") close();
     };
+    window.addEventListener("popstate", onPop);
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
+
     return () => {
+      window.removeEventListener("popstate", onPop);
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      // Se la chiusura è avvenuta dall'interfaccia (X, sfondo, Esc) e non dal
+      // tasto indietro, rimuoviamo la voce di cronologia che avevamo aggiunto.
+      if (window.history.state?.projectModal) {
+        window.history.back();
+      }
     };
-  }, [project, onClose]);
+  }, [project]);
 
   return (
     <AnimatePresence>
@@ -45,6 +63,21 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           aria-modal="true"
           aria-labelledby="project-modal-title"
         >
+          {/* Pulsante di chiusura fissato allo schermo: resta sempre
+              raggiungibile anche scorrendo schede lunghe su mobile. */}
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            aria-label="Chiudi"
+            className="glass fixed right-4 top-4 z-[81] flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] text-lg text-ink transition hover:text-white sm:right-6 sm:top-6"
+          >
+            ✕
+          </button>
+
           <motion.div
             className="glass border-grad relative my-auto w-full max-w-2xl rounded-4xl p-6 sm:p-9"
             initial={{ opacity: 0, y: 24, scale: 0.97 }}
@@ -53,16 +86,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             transition={{ duration: 0.35, ease: [0.16, 0.84, 0.32, 1] }}
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              ref={closeRef}
-              type="button"
-              onClick={onClose}
-              aria-label="Chiudi"
-              className="glass absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] text-lg text-muted transition hover:text-white"
-            >
-              ✕
-            </button>
-
             {/* anteprima */}
             <div
               className="relative mb-6 aspect-[16/9] overflow-hidden rounded-3xl"
@@ -155,6 +178,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </a>
               )}
             </div>
+
+            {/* Chiusura in fondo: comoda dopo aver scorso la scheda su mobile */}
+            <button
+              type="button"
+              onClick={onClose}
+              className="mt-8 w-full rounded-full border border-[var(--border)] py-3 text-sm text-muted transition hover:text-white"
+            >
+              ← Torna ai progetti
+            </button>
           </motion.div>
         </motion.div>
       )}
