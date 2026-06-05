@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Project } from "@/data/projects";
 
 interface ProjectModalProps {
@@ -21,6 +22,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   // ref così l'effetto di apertura/chiusura dipende solo da `project`.
   const onCloseRef = useRef(onClose);
   onCloseRef.current = onClose;
+
+  // Il modale viene montato via portal in <body>: così esce dal contesto di
+  // impilamento della sezione "Progetti" (position:relative + z-index) e non
+  // può essere coperto dalle sezioni successive. `mounted` evita il portal in SSR.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!project) return;
@@ -50,7 +57,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     };
   }, [project]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {project && (
         <motion.div
@@ -192,7 +201,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
 
