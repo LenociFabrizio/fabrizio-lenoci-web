@@ -102,8 +102,8 @@ export const site = {
 
   /** Link social — sostituisci con i tuoi profili reali */
   socials: [
-    { label: "GitHub", href: "https://github.com/fabriziolenoci" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/fabriziolenoci" },
+    { label: "GitHub", href: "https://github.com/LenociFabrizio" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/fabrizio-lenoci/" },
     { label: "Email", href: "mailto:fabriziolenoci@gmail.com" },
   ],
 
