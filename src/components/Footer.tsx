@@ -1,4 +1,4 @@
-import { navLinks, site } from "@/data/site";
+import { navLinks, site, whatsappLink } from "@/data/site";
 
 export default function Footer() {
   return (
@@ -38,9 +38,24 @@ export default function Footer() {
 
           {/* contatti */}
           <div className="flex flex-col gap-2 text-sm text-muted">
-            <a href="#contact" className="transition hover:text-white">
-              Scrivimi →
+            <a href={`mailto:${site.email}`} className="transition hover:text-white">
+              {site.email}
             </a>
+            {whatsappLink && (
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-white"
+              >
+                WhatsApp
+              </a>
+            )}
+            {site.phone && (
+              <a href={`tel:+${site.phone}`} className="transition hover:text-white">
+                +{site.phone}
+              </a>
+            )}
             <a href="/privacy" className="transition hover:text-white">
               Privacy Policy
             </a>
@@ -48,7 +63,9 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-[var(--border)] pt-8 text-xs text-muted-2 sm:flex-row">
-          <span>© {site.year} — Tutti i diritti riservati.</span>
+          <span>
+            © {site.year} {site.name} — Tutti i diritti riservati.
+          </span>
           {site.vatNumber && <span>P.IVA {site.vatNumber}</span>}
           <span className="font-mono">Progettato e sviluppato in proprio ✦</span>
         </div>

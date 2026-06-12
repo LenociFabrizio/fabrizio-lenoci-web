@@ -38,10 +38,13 @@ export default function PrivacyPage() {
             Titolare del trattamento
           </h2>
           <p>
-            Il titolare del trattamento è il gestore di questo sito
+            {site.name}
             {site.vatNumber ? ` — P.IVA ${site.vatNumber}` : ""}. Per qualsiasi
-            richiesta GDPR puoi utilizzare il modulo di contatto presente nel
-            sito.
+            richiesta puoi scrivere a{" "}
+            <a href={`mailto:${site.email}`} className="underline hover:text-white">
+              {site.email}
+            </a>
+            .
           </p>
         </section>
 
@@ -85,9 +88,12 @@ export default function PrivacyPage() {
           </h2>
           <p>
             Puoi chiedere in qualsiasi momento di accedere ai tuoi dati,
-            correggerli o cancellarli tramite il modulo di contatto presente nel
-            sito. Hai inoltre diritto di proporre reclamo all'autorità di
-            controllo (Garante per la protezione dei dati personali).
+            correggerli o cancellarli, scrivendo a{" "}
+            <a href={`mailto:${site.email}`} className="underline hover:text-white">
+              {site.email}
+            </a>
+            . Hai inoltre diritto di proporre reclamo all'autorità di controllo
+            (Garante per la protezione dei dati personali).
           </p>
         </section>
       </div>

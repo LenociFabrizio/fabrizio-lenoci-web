@@ -3,15 +3,27 @@ import "./globals.css";
 import { site } from "@/data/site";
 import Providers from "@/components/Providers";
 
+/**
+ * SEO METADATA
+ * Ottimizzato per il nome "Fabrizio Lenoci" e per i servizi offerti.
+ * Modifica le keyword e i testi nel file src/data/site.ts.
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `Portfolio — ${site.role}`,
-    template: `%s · Portfolio`,
+    default: `${site.name} — ${site.role}`,
+    template: `%s · ${site.name}`,
   },
   description: site.tagline,
-  applicationName: "Portfolio",
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
   keywords: [
+    "Fabrizio Lenoci",
+    "Fabrizio Lenoci portfolio",
+    "Fabrizio Lenoci sviluppatore",
+    "Fabrizio Lenoci web developer",
     "portfolio sviluppo web",
     "sviluppatore full-stack",
     "progetti React",
@@ -26,14 +38,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "it_IT",
     url: site.url,
-    siteName: "Portfolio",
-    title: `Portfolio — ${site.role}`,
+    siteName: site.name,
+    title: `${site.name} — ${site.role}`,
     description: site.tagline,
   },
   twitter: {
     card: "summary_large_image",
-    title: `Portfolio — ${site.role}`,
+    title: `${site.name} — ${site.role}`,
     description: site.tagline,
+    creator: "@fabriziolenoci",
   },
   robots: {
     index: true,
@@ -49,12 +62,20 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/**
+ * STRUCTURED DATA (JSON-LD) — schema.org/Person
+ * Aiuta Google a riconoscere il portfolio come quello di una persona fisica
+ * e a mostrarlo nei knowledge panel per ricerche tipo "Fabrizio Lenoci".
+ */
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  name: site.name,
   url: site.url,
+  email: site.email,
   jobTitle: site.role,
   description: site.tagline,
+  birthDate: String(site.birthYear),
   address: { "@type": "PostalAddress", addressCountry: "IT" },
   knowsAbout: [
     "Web Development",
@@ -73,6 +94,9 @@ const personJsonLd = {
       name: "Laurea in Informatica e Produzione del Software",
     },
   ],
+  sameAs: site.socials
+    .filter((s) => s.href.startsWith("http"))
+    .map((s) => s.href),
 };
 
 /**

@@ -8,10 +8,10 @@
 
 export const site = {
   /** Nome completo (usato in header, footer, SEO, structured data) */
-  name: "",
+  name: "Fabrizio Lenoci",
 
   /** Brand mostrato in navbar e footer (sintetico) */
-  brand: "Portfolio",
+  brand: "Fabrizio Lenoci",
 
   /** Ruolo principale */
   role: "Sviluppatore Software & Web Developer",
@@ -37,11 +37,12 @@ export const site = {
    *   es. phone: "393331234567". Se lasci la stringa vuota, i pulsanti
    *   relativi NON vengono mostrati (nessun numero finto online).
    */
-  phone: "", // es. "393331234567"
-  whatsapp: "", // es. "393331234567" — se vuoto il pulsante WhatsApp resta nascosto
+  phone: "393913495256", // es. "393331234567"
+  whatsapp: "393913495256", // es. "393331234567" — se vuoto il pulsante WhatsApp resta nascosto
 
   /** Messaggio precompilato per l'apertura della chat WhatsApp */
-  whatsappMessage: "",
+  whatsappMessage:
+    "Ciao Fabrizio! Ho visto il tuo portfolio e vorrei qualche informazione su un progetto.",
 
   /**
    * Partita IVA — forte segnale di serietà per le PMI italiane.
@@ -65,7 +66,7 @@ export const site = {
 
   /** Bio mostrata nella sezione About (array di paragrafi) */
   bio: [
-    "Sono uno sviluppatore full-stack. Diplomato e laureato in Informatica, dedico tempo a progettare e realizzare siti web e applicazioni per approfondire tecnologie, design e sviluppo software.",
+    "Sono Fabrizio Lenoci, sviluppatore full-stack. Diplomato e laureato in Informatica, dedico tempo a progettare e realizzare siti web e applicazioni per approfondire tecnologie, design e sviluppo software.",
     "Questo spazio raccoglie i progetti che sviluppo nel tempo: ogni progetto è un'occasione per sperimentare strumenti nuovi, curare i dettagli e migliorare il mio modo di scrivere codice.",
   ],
 
@@ -99,8 +100,12 @@ export const site = {
     { value: "100%", label: "Codice scritto a mano" },
   ],
 
-  /** Link social */
-  socials: [],
+  /** Link social — sostituisci con i tuoi profili reali */
+  socials: [
+    { label: "GitHub", href: "https://github.com/LenociFabrizio" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/fabrizio-lenoci/" },
+    { label: "Email", href: "mailto:fabriziolenoci@gmail.com" },
+  ],
 
   /** Tecnologie a scorrimento nella striscia marquee */
   marquee: [

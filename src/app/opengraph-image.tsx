@@ -7,7 +7,7 @@ import { site } from "@/data/site";
  * Risolve la mancanza di un og:image (le condivisioni apparivano "vuote").
  */
 export const runtime = "edge";
-export const alt = `Portfolio — ${site.role}`;
+export const alt = `${site.name} — ${site.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,7 +49,7 @@ export default function OpengraphImage() {
               letterSpacing: "-0.02em",
             }}
           >
-            Portfolio
+            {site.name}
           </div>
           <div
             style={{
