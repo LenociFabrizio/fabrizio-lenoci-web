@@ -4,7 +4,7 @@ import { site } from "@/data/site";
 /** Web App Manifest — migliora SEO/Best Practices e l'installazione su mobile. */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${site.name} — ${site.role}`,
+    name: `Portfolio — ${site.role}`,
     short_name: site.brand,
     description: site.tagline,
     start_url: "/",

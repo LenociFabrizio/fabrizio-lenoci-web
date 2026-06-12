@@ -41,11 +41,11 @@ export default function Hero() {
           variants={staggerItem}
           className="mt-7 max-w-xl text-[17px] leading-relaxed text-muted"
         >
-          Ciao, sono <strong className="text-ink">{site.name}</strong>,
-          sviluppatore full-stack. Questo è il mio spazio personale: una
-          raccolta di siti web e applicazioni che progetto e sviluppo per
-          approfondire tecnologie, design e sviluppo software — dal frontend al
-          backend.
+          Ciao! Sono un{" "}
+          <strong className="text-ink">sviluppatore full-stack</strong>. Questo
+          è il mio spazio personale: una raccolta di siti web e applicazioni che
+          progetto e sviluppo per approfondire tecnologie, design e sviluppo
+          software — dal frontend al backend.
         </motion.p>
 
         <motion.div

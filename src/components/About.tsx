@@ -51,16 +51,10 @@ export default function About() {
         <Reveal delay={0.1}>
           <div className="glass border-grad rounded-4xl p-8">
             <div className="mb-7 flex items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-grad-cta font-display text-2xl font-semibold text-[#0a0a12]">
-                {site.name
-                  .split(" ")
-                  .map((w) => w.charAt(0))
-                  .join("")}
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-grad-cta font-display text-xl font-semibold text-[#0a0a12]">
+                {"</>"}
               </div>
               <div>
-                <div className="font-display text-lg font-medium">
-                  {site.name}
-                </div>
                 <div className="text-sm text-muted">{site.role}</div>
               </div>
             </div>

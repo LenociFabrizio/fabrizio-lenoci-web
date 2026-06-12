@@ -85,9 +85,9 @@ export default function Contact() {
             <span className="text-grad">codice e progetti.</span>
           </h2>
           <p className="relative mx-auto mb-8 max-w-lg text-muted">
-            Per maggiori informazioni o per approfondire un progetto, trovi i
-            miei recapiti qui sotto. Sono sempre disponibile a confrontarmi su
-            idee, tecnologie e sviluppo.
+            Per maggiori informazioni o per approfondire un progetto, scrivi
+            tramite il modulo qui sotto. Sono sempre disponibile a confrontarmi
+            su idee, tecnologie e sviluppo.
           </p>
 
           {/* contatto diretto rapido */}

@@ -122,7 +122,7 @@ export const projects: Project[] = [
       "Anteprima della homepage di un sito vetrina multilingue per il settore alimentare",
     gradient: "linear-gradient(135deg,#ffb3a0,#b6a4ff)",
     live: "https://www.ilcarnisrl.it",
-    repo: "https://github.com/LenociFabrizio/ilcarnisrl",
+    repo: "",
     featured: true,
   },
 
