@@ -80,6 +80,53 @@ export interface Project {
  *  ELENCO PROGETTI (casi studio reali)
  * ============================================================ */
 export const projects: Project[] = [
+  /* -------- CASO STUDIO #2 — Magix S.r.l. -------- */
+  {
+    slug: "magix-srl",
+    title: "Catalogo prodotti e area riservata — edilizia",
+    kind: "reale",
+    category: "sito-web",
+    client: "Progetto personale · catalogo online con gestionale",
+    sector: "Materiali per l'edilizia",
+    year: "2026",
+    description:
+      "Sito con catalogo di malte e materiali edili: schede tecniche, ricerca dei prodotti e contenuti aggiornabili da un'area riservata.",
+    challenge:
+      "Sostituire un vecchio sito WordPress con una piattaforma veloce, in cui imprese e professionisti trovino subito prodotti, schede tecniche e documenti, e che l'azienda possa aggiornare da sola senza toccare il codice.",
+    solution:
+      "Ho sviluppato un sito in HTML, Tailwind e JavaScript vanilla con un backend Node.js e database MySQL. Un'area riservata permette di gestire catalogo, news, documenti e posizioni aperte; i vecchi indirizzi WordPress vengono reindirizzati alle nuove pagine.",
+    features: [
+      "Catalogo per categorie con scheda tecnica di ogni prodotto",
+      "Ricerca per nome, codice, norma e parole chiave",
+      "Pagina dedicata al cemento sfuso",
+      "News, area download dei documenti e pagina Lavora con noi con invio del CV",
+      "Modulo contatti via email e contatto diretto su WhatsApp",
+      "Area riservata per gestire prodotti, news, documenti e prodotto in evidenza in home",
+    ],
+    results: [
+      "Contenuti aggiornabili in autonomia dall'area riservata",
+      "Il sito resta online con i dati statici anche se il backend non risponde",
+      "Accesso riservato con sessioni firmate e header di sicurezza",
+      "Indirizzi SEO-friendly e redirect dai vecchi URL WordPress",
+      "Foto prodotto in WebP in due dimensioni per pagine leggere",
+    ],
+    stack: [
+      "HTML/CSS",
+      "Tailwind CSS",
+      "JavaScript",
+      "Node.js",
+      "MySQL",
+      "Nodemailer",
+      "SEO",
+    ],
+    image: "/projects/magix-srl.png",
+    imageAlt:
+      "Anteprima della homepage di un sito con catalogo di malte premiscelate e materiali per l'edilizia",
+    gradient: "linear-gradient(135deg,#2a2a2e,#141417)",
+    live: "https://magixsrl.it",
+    featured: true,
+  },
+
   /* -------- CASO STUDIO #1 — I.L. Carni SRL -------- */
   {
     slug: "il-carni-srl",
