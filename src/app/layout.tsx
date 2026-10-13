@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07070c",
+  themeColor: "#0b0b0d",
   width: "device-width",
   initialScale: 1,
 };
@@ -119,7 +119,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
         <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
         <link
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@300,400,500,600&f[]=jetbrains-mono@400,500&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600&display=swap"
           rel="stylesheet"
         />
         <script

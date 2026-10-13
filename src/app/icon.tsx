@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-/** Favicon generata automaticamente: iniziali su gradiente del brand. */
+/** Favicon generata automaticamente: iniziali su fondo chiaro. */
 export const runtime = "edge";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
@@ -17,8 +17,8 @@ export default function Icon() {
           justifyContent: "center",
           fontSize: 18,
           fontWeight: 700,
-          color: "#0a0a12",
-          background: "linear-gradient(120deg,#b6a4ff,#86e6ff)",
+          color: "#0b0b0d",
+          background: "#f4f3f1",
           borderRadius: 7,
           fontFamily: "sans-serif",
         }}

@@ -70,53 +70,11 @@ export const site = {
     "Questo spazio raccoglie i progetti che sviluppo nel tempo: ogni progetto è un'occasione per sperimentare strumenti nuovi, curare i dettagli e migliorare il mio modo di scrivere codice.",
   ],
 
-  /** Valori e approccio allo sviluppo (sezione Chi sono). */
-  reasons: [
-    {
-      title: "Codice curato",
-      desc: "Scrivo codice pulito, tipizzato e organizzato, con attenzione alla qualità e alla manutenibilità.",
-    },
-    {
-      title: "Cura del dettaglio",
-      desc: "Design, animazioni e micro-interazioni curati fino all'ultimo pixel, su ogni dispositivo.",
-    },
-    {
-      title: "Studio continuo",
-      desc: "Ogni progetto è un'occasione per imparare strumenti e tecniche nuove e mettermi alla prova.",
-    },
-    {
-      title: "Dall'idea al deploy",
-      desc: "Seguo l'intero percorso di un progetto: analisi, design, sviluppo frontend e backend, performance e pubblicazione.",
-    },
-  ],
-
-  /**
-   * Statistiche mostrate nell'hero.
-   * Neutre, descrittive del profilo da sviluppatore.
-   */
-  stats: [
-    { value: "Full-stack", label: "Frontend + Backend" },
-    { value: "A → Z", label: "Dall'idea al deploy" },
-    { value: "100%", label: "Codice scritto a mano" },
-  ],
-
   /** Link social — sostituisci con i tuoi profili reali */
   socials: [
     { label: "GitHub", href: "https://github.com/LenociFabrizio" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/fabrizio-lenoci/" },
     { label: "Email", href: "mailto:fabriziolenoci@gmail.com" },
-  ],
-
-  /** Tecnologie a scorrimento nella striscia marquee */
-  marquee: [
-    "NEXT.JS",
-    "REACT",
-    "TYPESCRIPT",
-    "TAILWIND",
-    "NODE",
-    "POSTGRES",
-    "PRISMA",
-    "FIGMA",
   ],
 };
 
@@ -130,9 +88,7 @@ export const whatsappLink = site.whatsapp
 
 /** Link del menu di navigazione */
 export const navLinks = [
-  { label: "Cosa faccio", href: "#services" },
   { label: "Progetti", href: "#work" },
-  { label: "Processo", href: "#process" },
   { label: "Chi sono", href: "#about" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Contatti", href: "#contact" },
 ];

@@ -1,9 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useMemo, useState } from "react";
 import { getCategories, projects, type Project } from "@/data/projects";
-import SectionHeading from "./ui/SectionHeading";
+import Reveal from "./ui/Reveal";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 
@@ -21,47 +21,37 @@ export default function Portfolio() {
   );
 
   return (
-    <section id="work" className="relative z-10 px-5 py-28 sm:px-8">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          index="02"
-          kicker="progetti"
-          title="Progetti e sperimentazioni"
-          description="Una selezione di siti e applicazioni che ho sviluppato. Apri un progetto per vedere com'è nato e le tecnologie che ho usato."
-          align="row"
-        />
+    <section id="work" className="relative z-10 px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-5xl">
+        <Reveal className="mb-8 flex items-baseline justify-between gap-4">
+          <h2 className="text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
+            Progetti
+          </h2>
+          <span className="font-mono text-sm tabular-nums text-muted-2">
+            {String(projects.length).padStart(2, "0")}
+          </span>
+        </Reveal>
 
         {/* filtri — mostrati solo se c'è più di una categoria reale */}
         {categories.length > 2 && (
-          <div className="mb-10 flex flex-wrap gap-2.5">
-            {categories.map((c) => {
-              const isActive = active === c.value;
-              return (
-                <button
-                  key={c.value}
-                  onClick={() => setActive(c.value)}
-                  className={`glass relative rounded-full border px-4 py-2 text-sm transition ${
-                    isActive
-                      ? "border-transparent text-[#0a0a12]"
-                      : "border-[var(--border)] text-muted hover:text-white"
-                  }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="chip"
-                      className="absolute inset-0 -z-10 rounded-full bg-grad-cta"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  {c.label}
-                </button>
-              );
-            })}
+          <div className="-mx-5 mb-8 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+            {categories.map((c) => (
+              <button
+                key={c.value}
+                type="button"
+                onClick={() => setActive(c.value)}
+                aria-pressed={active === c.value}
+                className={`btn shrink-0 text-sm ${
+                  active === c.value ? "btn-solid" : "btn-glass glass text-muted"
+                }`}
+              >
+                {c.label}
+              </button>
+            ))}
           </div>
         )}
 
-        {/* griglia */}
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2">
           <AnimatePresence mode="popLayout">
             {filtered.map((p) => (
               <ProjectCard key={p.slug} project={p} onOpen={setSelected} />

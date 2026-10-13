@@ -63,7 +63,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     <AnimatePresence>
       {project && (
         <motion.div
-          className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto overscroll-contain bg-black/90 p-4 backdrop-blur-sm sm:p-8"
+          className="fixed inset-0 z-[80] flex items-end justify-center bg-black/60 sm:items-center sm:p-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -72,132 +72,120 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           aria-modal="true"
           aria-labelledby="project-modal-title"
         >
-          {/* Pulsante di chiusura fissato allo schermo: resta sempre
-              raggiungibile anche scorrendo schede lunghe su mobile. */}
-          <button
-            ref={closeRef}
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
-            }}
-            aria-label="Chiudi"
-            style={{ backgroundColor: "#14141f" }}
-            className="fixed right-4 top-4 z-[81] flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] text-lg text-ink shadow-lg transition hover:text-white sm:right-6 sm:top-6"
-          >
-            ✕
-          </button>
-
+          {/* Sheet in vetro: sale dal basso su smartphone, centrato su desktop */}
           <motion.div
-            style={{ backgroundColor: "#0d0d17" }}
-            className="border-grad relative my-auto w-full max-w-2xl rounded-4xl border border-[var(--border)] p-6 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.9)] sm:p-9"
-            initial={{ opacity: 0, y: 24, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.97 }}
-            transition={{ duration: 0.35, ease: [0.16, 0.84, 0.32, 1] }}
+            className="glass-sheet relative flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-[2rem] sm:rounded-[2rem]"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ type: "spring", stiffness: 320, damping: 34 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* anteprima */}
-            <div
-              className="relative mb-6 aspect-[16/9] overflow-hidden rounded-3xl"
-              style={{ background: project.gradient }}
-            >
-              {project.image ? (
-                <Image
-                  src={project.image}
-                  alt={project.imageAlt ?? `Anteprima del sito ${project.title}`}
-                  fill
-                  sizes="(max-width:768px) 100vw, 640px"
-                  className="object-cover"
-                />
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-3xl font-semibold text-[rgba(10,10,18,0.85)]">
-                    {project.title}
-                  </span>
+            {/* Barra superiore fissa: chiusura sempre raggiungibile */}
+            <div className="flex items-center justify-between px-5 pb-2 pt-3">
+              <span aria-hidden className="h-1 w-9 rounded-full bg-white/20 sm:invisible" />
+              <button
+                ref={closeRef}
+                type="button"
+                onClick={onClose}
+                aria-label="Chiudi"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-sm text-ink transition hover:bg-white/15"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="overflow-y-auto overscroll-contain px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-8 sm:pb-8">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-white/5">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt ?? `Anteprima del sito ${project.title}`}
+                    fill
+                    sizes="(max-width:768px) 100vw, 640px"
+                    className="object-cover object-top"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-3xl font-semibold text-muted">
+                      {project.title}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-center gap-2 text-[13px] text-muted-2">
+                <span>{project.sector}</span>
+                {project.year && (
+                  <>
+                    <span aria-hidden>·</span>
+                    <span>{project.year}</span>
+                  </>
+                )}
+              </div>
+              <h2
+                id="project-modal-title"
+                className="mt-1.5 text-3xl font-semibold tracking-[-0.03em]"
+              >
+                {project.title}
+              </h2>
+              <p className="mt-1 text-sm text-muted">{project.client}</p>
+
+              <CaseBlock label="Obiettivo" text={project.challenge} />
+              <CaseBlock label="Come l'ho sviluppato" text={project.solution} />
+              <CaseList label="Funzionalità" items={project.features} />
+              <CaseList label="Punti chiave" items={project.results} />
+
+              {project.testimonial && (
+                <figure className="mt-8 border-l-2 border-accent pl-4">
+                  <blockquote className="text-[15px] leading-relaxed text-ink">
+                    &ldquo;{project.testimonial.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-2 text-xs text-muted">
+                    {project.testimonial.author}, {project.testimonial.role}
+                  </figcaption>
+                </figure>
+              )}
+
+              <div className="mt-8">
+                <h3 className="mb-2.5 text-[13px] font-medium text-muted-2">
+                  Tecnologie
+                </h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.stack.map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-lg bg-white/[0.06] px-2.5 py-1 font-mono text-[11px] text-muted"
+                    >
+                      {s}
+                    </span>
+                  ))}
                 </div>
-              )}
-            </div>
+              </div>
 
-            <div className="mb-1 flex flex-wrap items-center gap-2 font-mono text-[11px] text-muted-2">
-              <span>{project.sector}</span>
-              {project.year && (
-                <>
-                  <span aria-hidden>·</span>
-                  <span>{project.year}</span>
-                </>
-              )}
-            </div>
-            <h2
-              id="project-modal-title"
-              className="font-display text-3xl font-semibold tracking-tight"
-            >
-              {project.title}
-            </h2>
-            <p className="mt-1 text-sm text-muted">{project.client}</p>
-
-            <CaseBlock label="L'obiettivo" text={project.challenge} />
-            <CaseBlock label="Come l'ho sviluppato" text={project.solution} />
-
-            <CaseList label="Cosa ho realizzato" items={project.features} />
-            <CaseList label="Punti chiave" items={project.results} accent />
-
-            {project.testimonial && (
-              <figure className="glass mt-7 rounded-3xl border border-[var(--border)] p-6">
-                <blockquote className="text-[15px] leading-relaxed text-ink">
-                  &ldquo;{project.testimonial.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-3 text-xs text-muted">
-                  — {project.testimonial.author}, {project.testimonial.role}
-                </figcaption>
-              </figure>
-            )}
-
-            <div className="mt-7">
-              <div className="mb-2 font-mono text-xs text-lilac">Tecnologie</div>
-              <div className="flex flex-wrap gap-1.5">
-                {project.stack.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded-md bg-[var(--panel-strong)] px-2 py-1 font-mono text-[11px] text-muted"
+              <div className="mt-8 flex flex-col gap-2 sm:flex-row">
+                {project.live && project.live !== "#" && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-solid"
                   >
-                    {s}
-                  </span>
-                ))}
+                    Visita il sito ↗
+                  </a>
+                )}
+                {project.repo && project.repo !== "#" && (
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-glass bg-white/[0.06]"
+                  >
+                    Codice su GitHub ↗
+                  </a>
+                )}
               </div>
             </div>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              {project.live && project.live !== "#" && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary rounded-full px-5 py-2.5 text-sm font-medium"
-                >
-                  Visita il sito ↗
-                </a>
-              )}
-              {project.repo && project.repo !== "#" && (
-                <a
-                  href={project.repo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-ghost glass rounded-full border border-[var(--border)] px-5 py-2.5 text-sm"
-                >
-                  Codice su GitHub ↗
-                </a>
-              )}
-            </div>
-
-            {/* Chiusura in fondo: comoda dopo aver scorso la scheda su mobile */}
-            <button
-              type="button"
-              onClick={onClose}
-              className="mt-8 w-full rounded-full border border-[var(--border)] py-3 text-sm text-muted transition hover:text-white"
-            >
-              ← Torna ai progetti
-            </button>
           </motion.div>
         </motion.div>
       )}
@@ -208,31 +196,21 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
 function CaseBlock({ label, text }: { label: string; text: string }) {
   return (
-    <div className="mt-6">
-      <div className="mb-1.5 font-mono text-xs text-lilac">{label}</div>
+    <div className="mt-7">
+      <h3 className="mb-1.5 text-[13px] font-medium text-muted-2">{label}</h3>
       <p className="text-[15px] leading-relaxed text-muted">{text}</p>
     </div>
   );
 }
 
-function CaseList({
-  label,
-  items,
-  accent = false,
-}: {
-  label: string;
-  items: string[];
-  accent?: boolean;
-}) {
+function CaseList({ label, items }: { label: string; items: string[] }) {
   return (
-    <div className="mt-6">
-      <div className="mb-2 font-mono text-xs text-lilac">{label}</div>
+    <div className="mt-7">
+      <h3 className="mb-2 text-[13px] font-medium text-muted-2">{label}</h3>
       <ul className="space-y-2">
         {items.map((item) => (
-          <li key={item} className="flex gap-2.5 text-[15px] leading-relaxed text-muted">
-            <span aria-hidden className={accent ? "text-mint" : "text-cyan"}>
-              {accent ? "✦" : "›"}
-            </span>
+          <li key={item} className="flex gap-3 text-[15px] leading-relaxed text-muted">
+            <span aria-hidden className="mt-[0.6em] h-1 w-1 shrink-0 rounded-full bg-accent" />
             <span>{item}</span>
           </li>
         ))}

@@ -1,114 +1,89 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { navLinks, site } from "@/data/site";
 
+/**
+ * Navigazione in vetro:
+ *  - in alto una barra compatta con il nome (e i link su desktop);
+ *  - su smartphone un dock fluttuante in basso, raggiungibile col pollice.
+ * La sezione visibile viene evidenziata tramite IntersectionObserver.
+ */
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const sections = navLinks
+      .map((l) => document.querySelector<HTMLElement>(l.href))
+      .filter((el): el is HTMLElement => el !== null);
 
-  // Chiude il menu mobile quando si torna a viewport desktop
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const onChange = () => mq.matches && setOpen(false);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) setActive(`#${e.target.id}`);
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -30, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 0.84, 0.32, 1] }}
-      className="fixed inset-x-0 top-0 z-50 px-5 pt-4 sm:px-8"
-    >
-      <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-5 py-3 transition-all duration-500 ${
-          scrolled ? "glass border-grad" : "border border-transparent"
-        }`}
-      >
-        <a
-          href="#hero"
-          className="flex items-center gap-2 font-display text-[15px] font-semibold tracking-tight"
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6">
+        <nav
+          aria-label="Principale"
+          className="glass-thick mx-auto flex h-12 max-w-5xl items-center justify-between rounded-full pl-5 pr-1.5"
         >
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-grad-cta shadow-glow-lilac" />
-          {site.brand}
-        </a>
+          <a href="#top" className="text-[15px] font-semibold tracking-tight">
+            {site.brand}
+          </a>
 
-        <div className="hidden items-center gap-7 text-sm text-muted lg:flex">
-          {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link transition hover:text-white">
-              {l.label}
-            </a>
-          ))}
-        </div>
-
-        <a
-          href="#contact"
-          className="btn-ghost glass hidden rounded-full border border-[var(--border)] px-4 py-2 text-sm lg:inline-flex"
-        >
-          Contatti
-        </a>
-
-        <button
-          aria-label={open ? "Chiudi menu" : "Apri menu"}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          onClick={() => setOpen((v) => !v)}
-          className="glass flex h-9 w-9 items-center justify-center rounded-full border border-[var(--border)] lg:hidden"
-        >
-          <span className="relative block h-3.5 w-4">
-            <span
-              className={`absolute left-0 block h-0.5 w-4 bg-ink transition-all duration-300 ${
-                open ? "top-1.5 rotate-45" : "top-0.5"
-              }`}
-            />
-            <span
-              className={`absolute left-0 block h-0.5 w-4 bg-ink transition-all duration-300 ${
-                open ? "top-1.5 -rotate-45" : "top-[11px]"
-              }`}
-            />
-          </span>
-        </button>
-      </nav>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="glass border-grad mx-auto mt-2 max-w-6xl rounded-2xl p-4 lg:hidden"
-          >
+          <div className="hidden items-center gap-1 sm:flex">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-xl px-4 py-3 text-sm text-muted transition hover:bg-[var(--panel-strong)] hover:text-white"
+                aria-current={active === l.href ? "true" : undefined}
+                className={`rounded-full px-4 py-2 text-sm transition-colors ${
+                  active === l.href
+                    ? "bg-white/10 text-ink"
+                    : "text-muted hover:text-ink"
+                }`}
               >
                 {l.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="btn-primary mt-2 flex justify-center rounded-xl py-3 text-sm font-medium"
-            >
-              Contatti →
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+          </div>
+
+          <a
+            href={`mailto:${site.email}`}
+            className="btn btn-solid min-h-[36px] px-4 text-sm sm:hidden"
+          >
+            Scrivimi
+          </a>
+        </nav>
+      </header>
+
+      {/* Dock mobile */}
+      <nav
+        aria-label="Sezioni"
+        className="glass-thick fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-50 flex -translate-x-1/2 gap-1 rounded-full p-1.5 sm:hidden"
+      >
+        {navLinks.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            aria-current={active === l.href ? "true" : undefined}
+            className={`flex min-h-[44px] items-center whitespace-nowrap rounded-full px-4 text-sm font-medium transition-colors ${
+              active === l.href ? "bg-white/[0.14] text-ink" : "text-muted"
+            }`}
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
+    </>
   );
 }

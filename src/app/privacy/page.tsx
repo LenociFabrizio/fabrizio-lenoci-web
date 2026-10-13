@@ -20,12 +20,12 @@ export default function PrivacyPage() {
     <main id="main" className="relative z-10 mx-auto max-w-3xl px-5 py-32 sm:px-8">
       <Link
         href="/"
-        className="font-mono text-xs text-lilac transition hover:text-white"
+        className="font-mono text-xs text-accent transition hover:text-white"
       >
         ← Torna al sito
       </Link>
 
-      <h1 className="mb-3 mt-6 font-display text-4xl font-semibold tracking-tight">
+      <h1 className="mb-3 mt-6 text-4xl font-semibold tracking-tight">
         Privacy Policy
       </h1>
       <p className="mb-10 text-sm text-muted-2">
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
 
       <div className="space-y-8 text-[15px] leading-relaxed text-muted">
         <section>
-          <h2 className="mb-2 font-display text-xl font-medium text-ink">
+          <h2 className="mb-2 text-xl font-medium text-ink">
             Titolare del trattamento
           </h2>
           <p>
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="mb-2 font-display text-xl font-medium text-ink">
+          <h2 className="mb-2 text-xl font-medium text-ink">
             Quali dati raccolgo
           </h2>
           <p>
@@ -61,7 +61,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="mb-2 font-display text-xl font-medium text-ink">
+          <h2 className="mb-2 text-xl font-medium text-ink">
             Perché li uso
           </h2>
           <p>
@@ -73,7 +73,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="mb-2 font-display text-xl font-medium text-ink">
+          <h2 className="mb-2 text-xl font-medium text-ink">
             Per quanto tempo
           </h2>
           <p>
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="mb-2 font-display text-xl font-medium text-ink">
+          <h2 className="mb-2 text-xl font-medium text-ink">
             I tuoi diritti
           </h2>
           <p>

@@ -1,11 +1,7 @@
 /**
- * Sfondo ambientale: tre orb glow soft-neon statici.
- *
- * Versione "performance-first": niente animazioni continue, niente parallasse.
- * Il blur su elementi grandi è naturalmente costoso, mantenerli statici
- * elimina del tutto il costo di compositing ad ogni frame.
- * L'estetica Gen X Soft Club resta intatta — gli orb sfocati funzionano
- * benissimo anche fermi, perché l'occhio li percepisce come atmosfera.
+ * Sfondo ambientale: due macchie di luce statiche e tenui.
+ * Servono a dare materia al vetro (il backdrop-filter ha qualcosa da
+ * sfocare) senza animazioni continue né costi di compositing a ogni frame.
  */
 export default function GlowBackground() {
   return (
@@ -14,24 +10,15 @@ export default function GlowBackground() {
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
       <div
-        className="absolute -left-32 -top-44 h-[500px] w-[500px] rounded-full opacity-50 blur-[60px]"
+        className="absolute -right-[30vw] -top-[20vh] h-[80vh] w-[90vw] rounded-full opacity-[0.22] blur-[80px]"
         style={{
-          background:
-            "radial-gradient(circle at 30% 30%, var(--lilac), transparent 65%)",
+          background: "radial-gradient(circle, var(--accent), transparent 62%)",
         }}
       />
       <div
-        className="absolute -right-40 top-[18%] h-[460px] w-[460px] rounded-full opacity-35 blur-[60px]"
+        className="absolute -bottom-[30vh] -left-[30vw] h-[70vh] w-[80vw] rounded-full opacity-[0.10] blur-[80px]"
         style={{
-          background:
-            "radial-gradient(circle at 60% 40%, var(--cyan), transparent 64%)",
-        }}
-      />
-      <div
-        className="absolute -bottom-52 left-[30%] h-[540px] w-[540px] rounded-full opacity-25 blur-[60px]"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 50%, var(--peach), transparent 66%)",
+          background: "radial-gradient(circle, #f4f3f1, transparent 60%)",
         }}
       />
     </div>

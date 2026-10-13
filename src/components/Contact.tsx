@@ -13,6 +13,10 @@ const projectTypes = [
   "Altro",
 ];
 
+/** Numero leggibile: "393331234567" → "+39 333 123 4567" */
+const formatPhone = (n: string) =>
+  `+${n.slice(0, 2)} ${n.slice(2, 5)} ${n.slice(5, 8)} ${n.slice(8)}`;
+
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({
@@ -68,60 +72,72 @@ export default function Contact() {
   };
 
   const fieldClass =
-    "glass rounded-xl border border-[var(--border)] bg-transparent px-4 py-3.5 text-sm";
+    "w-full rounded-2xl border border-[var(--line)] bg-white/[0.04] px-4 py-3.5 text-base text-ink placeholder:text-muted-2";
+
+  const channels = [
+    { label: "Email", value: site.email, href: `mailto:${site.email}` },
+    whatsappLink && { label: "WhatsApp", value: "Apri la chat", href: whatsappLink, external: true },
+    site.phone && { label: "Telefono", value: formatPhone(site.phone), href: `tel:+${site.phone}` },
+    ...site.socials
+      .filter((s) => s.href.startsWith("http"))
+      .map((s) => ({
+        label: s.label,
+        value: s.href.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, ""),
+        href: s.href,
+        external: true,
+      })),
+  ].filter(Boolean) as { label: string; value: string; href: string; external?: boolean }[];
 
   return (
-    <section id="contact" className="relative z-10 px-5 py-28 sm:px-8">
-      <Reveal className="mx-auto max-w-4xl">
-        <div className="glass border-grad relative overflow-hidden rounded-5xl p-8 text-center sm:p-14">
-          <div className="absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,var(--lilac),transparent_65%)] opacity-25 blur-[40px]" />
-
-          <span className="relative font-mono text-xs text-lilac">
-            / 08 — contatti
-          </span>
-          <h2 className="relative mb-4 mt-4 font-display text-4xl font-semibold tracking-tight sm:text-6xl">
-            Parliamo di
-            <br />
-            <span className="text-grad">codice e progetti.</span>
+    <section id="contact" className="relative z-10 px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-5xl">
+        <Reveal>
+          <h2 className="text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
+            Contatti
           </h2>
-          <p className="relative mx-auto mb-8 max-w-lg text-muted">
-            Per maggiori informazioni o per approfondire un progetto, trovi i
-            miei recapiti qui sotto. Sono sempre disponibile a confrontarmi su
-            idee, tecnologie e sviluppo.
+          <p className="mt-4 max-w-md text-[17px] leading-relaxed text-muted">
+            Per informazioni o per approfondire un progetto, scrivimi o
+            chiamami. Rispondo {site.responseTime}.
           </p>
+        </Reveal>
 
-          {/* contatto diretto rapido */}
-          {(whatsappLink || site.phone) && (
-            <div className="relative mb-10 flex flex-wrap items-center justify-center gap-3">
-              {whatsappLink && (
+        <Reveal delay={0.05} className="mt-8 grid gap-4 md:grid-cols-2 md:items-start">
+          <ul className="glass overflow-hidden rounded-3xl">
+            {channels.map((c) => (
+              <li key={c.label}>
                 <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-ghost glass inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-5 py-2.5 text-sm"
+                  href={c.href}
+                  {...(c.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                  className="list-row"
                 >
-                  <span aria-hidden className="text-mint">
-                    ●
+                  <span className="text-[15px] text-muted-2">{c.label}</span>
+                  <span className="flex min-w-0 items-center gap-2 text-[15px] text-ink">
+                    <span className="truncate">{c.value}</span>
+                    <span aria-hidden className="text-muted-2">
+                      {c.external ? "↗" : "›"}
+                    </span>
                   </span>
-                  Scrivimi su WhatsApp
                 </a>
-              )}
-              {site.phone && (
-                <a
-                  href={`tel:+${site.phone}`}
-                  className="btn-ghost glass inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-5 py-2.5 text-sm"
-                >
-                  Chiamami
-                </a>
-              )}
-            </div>
-          )}
+              </li>
+            ))}
+          </ul>
 
-          <form
-            onSubmit={handleSubmit}
-            className="relative mx-auto grid max-w-xl gap-4 text-left sm:grid-cols-2"
-          >
-            <div className="flex flex-col gap-1.5">
+          {/* Modulo secondario: chiuso di default per non appesantire la pagina */}
+          <details className="glass group overflow-hidden rounded-3xl">
+            <summary className="list-row">
+              <span className="text-[15px] text-ink">Scrivimi un messaggio</span>
+              <span
+                aria-hidden
+                className="text-lg text-muted-2 transition-transform duration-200 group-open:rotate-45"
+              >
+                +
+              </span>
+            </summary>
+
+            <form
+              onSubmit={handleSubmit}
+              className="grid gap-3 border-t border-[var(--line)] p-4 sm:p-5"
+            >
               <label htmlFor="c-name" className="sr-only">
                 Nome
               </label>
@@ -135,8 +151,6 @@ export default function Contact() {
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className={fieldClass}
               />
-            </div>
-            <div className="flex flex-col gap-1.5">
               <label htmlFor="c-email" className="sr-only">
                 Email
               </label>
@@ -150,9 +164,6 @@ export default function Contact() {
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 className={fieldClass}
               />
-            </div>
-
-            <div className="flex flex-col gap-1.5 sm:col-span-2">
               <label htmlFor="c-type" className="sr-only">
                 Motivo del contatto
               </label>
@@ -163,14 +174,11 @@ export default function Contact() {
                 className={`${fieldClass} appearance-none`}
               >
                 {projectTypes.map((t) => (
-                  <option key={t} value={t} className="bg-bg-soft text-ink">
+                  <option key={t} value={t} className="bg-bg text-ink">
                     {t}
                   </option>
                 ))}
               </select>
-            </div>
-
-            <div className="flex flex-col gap-1.5 sm:col-span-2">
               <label htmlFor="c-message" className="sr-only">
                 Messaggio
               </label>
@@ -178,76 +186,60 @@ export default function Contact() {
                 id="c-message"
                 required
                 rows={4}
-                placeholder="Scrivi pure il tuo messaggio…"
+                placeholder="Messaggio"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 className={`${fieldClass} resize-none`}
               />
-            </div>
 
-            <label className="flex items-start gap-2.5 text-xs leading-relaxed text-muted sm:col-span-2">
-              <input
-                type="checkbox"
-                required
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
-                className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--lilac)]"
-              />
-              <span>
-                Ho letto la{" "}
-                <a href="/privacy" className="underline hover:text-white">
-                  Privacy Policy
-                </a>{" "}
-                e acconsento al trattamento dei miei dati per essere
-                ricontattato. I dati vengono usati solo per risponderti e non
-                sono condivisi con terzi.
-              </span>
-            </label>
+              <label className="flex items-start gap-2.5 text-xs leading-relaxed text-muted">
+                <input
+                  type="checkbox"
+                  required
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--accent)]"
+                />
+                <span>
+                  Ho letto la{" "}
+                  <a href="/privacy" className="underline hover:text-ink">
+                    Privacy Policy
+                  </a>{" "}
+                  e acconsento al trattamento dei miei dati per essere
+                  ricontattato. I dati vengono usati solo per risponderti e non
+                  sono condivisi con terzi.
+                </span>
+              </label>
 
-            <button
-              type="submit"
-              disabled={status === "sending" || !consent}
-              className="btn-primary rounded-xl py-4 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2"
-            >
-              {status === "sending"
-                ? "Invio in corso…"
-                : status === "sent"
-                  ? "Messaggio inviato ✦"
-                  : "Invia messaggio →"}
-            </button>
-
-            {status === "sent" && (
-              <p className="text-sm text-mint sm:col-span-2">
-                Grazie! Ho ricevuto il tuo messaggio e ti risponderò appena
-                possibile. Controlla anche lo spam, per sicurezza.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-sm text-red-400 sm:col-span-2">
-                Ops, qualcosa è andato storto. Riprova o scrivimi direttamente a{" "}
-                <a href={`mailto:${site.email}`} className="underline">
-                  {site.email}
-                </a>
-                .
-              </p>
-            )}
-          </form>
-
-          <div className="relative mt-10 flex items-center justify-center gap-6 text-sm text-muted">
-            {site.socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className="nav-link transition hover:text-white"
+              <button
+                type="submit"
+                disabled={status === "sending" || !consent}
+                className="btn btn-solid w-full disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {s.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      </Reveal>
+                {status === "sending"
+                  ? "Invio in corso…"
+                  : status === "sent"
+                    ? "Messaggio inviato"
+                    : "Invia"}
+              </button>
+
+              <p role="status" className="text-sm empty:hidden">
+                {status === "sent" &&
+                  "Grazie, ho ricevuto il tuo messaggio. Ti rispondo appena possibile: controlla anche lo spam."}
+                {status === "error" && (
+                  <span className="text-red-300">
+                    Invio non riuscito. Riprova o scrivimi a{" "}
+                    <a href={`mailto:${site.email}`} className="underline">
+                      {site.email}
+                    </a>
+                    .
+                  </span>
+                )}
+              </p>
+            </form>
+          </details>
+        </Reveal>
+      </div>
     </section>
   );
 }

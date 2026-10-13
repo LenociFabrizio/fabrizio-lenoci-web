@@ -22,14 +22,12 @@ npm run build && npm run start   # build di produzione
 
 ## ✏️ Cosa modificare (parti da qui)
 
-Tutti i contenuti sono centralizzati in **4 file**: non servono modifiche ai componenti.
+Tutti i contenuti sono centralizzati in **2 file**: non servono modifiche ai componenti.
 
 | Cosa | File |
 |------|------|
-| Nome, bio, social, statistiche, telefono/WhatsApp, P.IVA, dominio | `src/data/site.ts` |
+| Nome, bio, social, telefono/WhatsApp, P.IVA, dominio | `src/data/site.ts` |
 | **Progetti del portfolio / casi studio** (aggiungi/modifica/elimina) | `src/data/projects.ts` |
-| **Servizi, processo, FAQ, testimonianze** | `src/data/content.ts` |
-| Competenze tecniche (sezione "Tecnologie") | `src/data/skills.ts` |
 
 > ⚙️ **Dati da compilare per primi** in `src/data/site.ts`: `phone` / `whatsapp`
 > (numero internazionale senza `+` né spazi, es. `393331234567`), `vatNumber`
@@ -74,9 +72,8 @@ Apri `src/data/projects.ts` e copia il blocco **MODELLO** in fondo all'array `pr
 
 ### Testimonianze
 
-In `src/data/content.ts`, l'array `testimonials` parte **vuoto**: la sezione
-"Dicono di me" resta nascosta finché non inserisci recensioni **reali**.
-Stesso principio per `projects[].testimonial`. Non inserire mai recensioni finte.
+`projects[].testimonial` è facoltativo: compare nel dettaglio del progetto solo
+se lo compili. Non inserire mai recensioni finte.
 
 ### Aggiungere lo screenshot di un progetto
 
@@ -93,20 +90,18 @@ src/
 ├─ app/
 │  ├─ layout.tsx        # SEO, font, JSON-LD Person schema
 │  ├─ page.tsx          # composizione delle sezioni
-│  ├─ globals.css       # design tokens + utility (glass, glow, grain)
+│  ├─ globals.css       # design tokens + utility (glass, list-row, grain)
 │  ├─ sitemap.ts        # SEO — generato da site.url
 │  └─ robots.ts         # SEO
 ├─ components/
-│  ├─ Navbar.tsx        Hero.tsx       Marquee.tsx
-│  ├─ Portfolio.tsx     ProjectCard.tsx
-│  ├─ About.tsx         Skills.tsx     Contact.tsx   Footer.tsx
+│  ├─ Navbar.tsx        Hero.tsx       # navbar + dock mobile, intro
+│  ├─ Portfolio.tsx     ProjectCard.tsx   ProjectModal.tsx
+│  ├─ About.tsx         Contact.tsx    Footer.tsx
 │  └─ ui/
-│     ├─ GlowBackground.tsx   GrainOverlay.tsx
-│     ├─ Reveal.tsx           SectionHeading.tsx   MagneticButton.tsx
+│     ├─ GlowBackground.tsx   GrainOverlay.tsx   Reveal.tsx
 ├─ data/
 │  ├─ site.ts           # ← TUTTI i tuoi dati personali
-│  ├─ projects.ts       # ← I TUOI progetti
-│  └─ skills.ts         # ← Le TUE competenze
+│  └─ projects.ts       # ← I TUOI progetti
 └─ lib/
    └─ motion.ts         # varianti Framer Motion condivise
 ```

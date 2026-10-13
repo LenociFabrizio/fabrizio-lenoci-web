@@ -2,84 +2,58 @@
 
 import { motion } from "framer-motion";
 import { site } from "@/data/site";
-import { ease, stagger, staggerItem } from "@/lib/motion";
-import MagneticButton from "./ui/MagneticButton";
+import { stagger, staggerItem } from "@/lib/motion";
 
 export default function Hero() {
+  const [first, ...rest] = site.name.split(" ");
+
   return (
     <section
-      id="hero"
-      className="relative flex min-h-screen items-center px-5 pb-20 pt-28 sm:px-8"
+      id="top"
+      className="relative flex min-h-[100svh] items-end px-5 pb-28 pt-28 sm:items-center sm:px-8 sm:pb-20"
     >
       <motion.div
         variants={stagger}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mx-auto w-full max-w-6xl"
+        className="relative z-10 mx-auto w-full max-w-5xl"
       >
         {site.available && (
-          <motion.div
+          <motion.p
             variants={staggerItem}
-            className="glass mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs text-muted"
+            className="glass mb-7 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[13px] text-muted"
           >
-            <span className="h-2 w-2 animate-floaty rounded-full bg-mint shadow-[0_0_10px_var(--mint)]" />
-            Sempre immerso nella programmazione · {site.year}
-          </motion.div>
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            {site.location}
+          </motion.p>
         )}
 
         <motion.h1
           variants={staggerItem}
-          className="font-display text-[clamp(2.6rem,8vw,6.5rem)] font-semibold leading-[0.98] tracking-tight"
+          className="text-[clamp(3.6rem,17vw,9.5rem)] font-semibold leading-[0.88] tracking-[-0.045em]"
         >
-          Progetti web, codice
+          {first}
           <br />
-          e <span className="text-grad">sperimentazione</span>
-          <span className="text-grad-2 italic">.</span>
+          <span className="text-muted-2">{rest.join(" ")}</span>
         </motion.h1>
 
         <motion.p
           variants={staggerItem}
-          className="mt-7 max-w-xl text-[17px] leading-relaxed text-muted"
+          className="mt-7 max-w-md text-lg leading-relaxed text-muted"
         >
-          Ciao, sono <strong className="text-ink">{site.name}</strong>,
-          sviluppatore full-stack. Questo è il mio spazio personale: una
-          raccolta di siti web e applicazioni che progetto e sviluppo per
-          approfondire tecnologie, design e sviluppo software — dal frontend al
-          backend.
+          Sviluppatore full-stack. Qui raccolgo i siti e le applicazioni che
+          progetto e sviluppo, dal frontend al backend.
         </motion.p>
 
-        <motion.div
-          variants={staggerItem}
-          className="mt-10 flex flex-wrap items-center gap-4"
-        >
-          <MagneticButton href="#work">Esplora i progetti →</MagneticButton>
-          <MagneticButton href="#contact" variant="ghost">
+        <motion.div variants={staggerItem} className="mt-9 flex gap-3">
+          <a href="#work" className="btn btn-solid">
+            Vedi i progetti
+          </a>
+          <a href="#contact" className="btn btn-glass glass">
             Contatti
-          </MagneticButton>
-        </motion.div>
-
-        <motion.div
-          variants={staggerItem}
-          className="mt-16 grid max-w-md grid-cols-3 gap-6"
-        >
-          {site.stats.map((s) => (
-            <div key={s.label}>
-              <div className="text-grad font-display text-2xl font-semibold sm:text-3xl">
-                {s.value}
-              </div>
-              <div className="mt-1 text-xs text-muted-2">{s.label}</div>
-            </div>
-          ))}
+          </a>
         </motion.div>
       </motion.div>
-
-      <motion.div
-        aria-hidden
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.4, ease }}
-        className="pointer-events-none absolute right-[-10%] top-1/2 hidden h-[460px] w-[460px] -translate-y-1/2 animate-floaty rounded-full border border-white/[0.06] lg:block"
-      />
     </section>
   );
 }
