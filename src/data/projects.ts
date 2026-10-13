@@ -127,6 +127,52 @@ export const projects: Project[] = [
     featured: true,
   },
 
+  /* -------- CASO STUDIO #3 — Bistrò & Café Mozart -------- */
+  {
+    slug: "bistro-mozart",
+    title: "Sito con prenotazioni — bistrot e pasticceria",
+    kind: "reale",
+    category: "sito-web",
+    client: "Progetto personale · sito vetrina con prenotazione tavoli",
+    sector: "Ristorazione",
+    year: "2026",
+    description:
+      "Sito per un bistrot di Bari con Menu del Giorno aggiornabile, prenotazione dei tavoli per fascia oraria e interfaccia in nove lingue.",
+    challenge:
+      "Dare a un bistrot un sito che presenti colazioni, brunch e pasticceria e che permetta di prenotare un tavolo online, senza superare i posti disponibili e senza costringere il personale a gestire tutto al telefono.",
+    solution:
+      "Ho sviluppato un sito con backend Node.js ed Express e database PostgreSQL su Neon, pubblicato su Vercel. Le prenotazioni seguono la capienza di ogni fascia di 30 minuti e un'area riservata permette di gestire Menu del Giorno, Drink List e prenotazioni.",
+    features: [
+      "Menu del Giorno con foto, descrizione, prezzo e stato esaurito",
+      "Drink List in PDF consultabile direttamente nel sito",
+      "Prenotazione del tavolo con disponibilità per fascia oraria in tempo reale",
+      "Interfaccia in nove lingue, con orari in formato 24h o AM/PM",
+      "Dashboard delle prenotazioni con stati, prenotazioni telefoniche e walk-in",
+      "Messaggio WhatsApp pronto da inviare al cliente alla conferma o al rifiuto",
+    ],
+    results: [
+      "Prenotazioni bloccate automaticamente oltre la capienza di ogni fascia",
+      "Menu e Drink List aggiornabili in autonomia dall'area riservata",
+      "Accesso admin protetto da password configurata solo lato server",
+      "Cookie banner con soli cookie tecnici e informativa privacy completa",
+    ],
+    stack: [
+      "Node.js",
+      "Express",
+      "PostgreSQL (Neon)",
+      "JavaScript",
+      "HTML/CSS",
+      "Vercel",
+      "Multilingua",
+    ],
+    image: "/projects/bistro-mozart.png",
+    imageAlt:
+      "Anteprima della homepage di un sito per un bistrot e pasticceria di Bari",
+    gradient: "linear-gradient(135deg,#2a2a2e,#141417)",
+    live: "https://www.bistromozart.it",
+    featured: true,
+  },
+
   /* -------- CASO STUDIO #1 — I.L. Carni SRL -------- */
   {
     slug: "il-carni-srl",
